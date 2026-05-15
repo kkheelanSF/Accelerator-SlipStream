@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salesforce SlipStream</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 320px;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", system-ui, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-icon {
+      font-size: 48px;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .version {
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.8;
+      margin-bottom: 24px;
+    }
+
+    .info-box {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .info-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .info-content {
+      font-size: 13px;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    .shortcut {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      margin: 4px 0;
+    }
+
+    .status {
+      text-align: center;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      font-size: 12px;
+    }
+
+    .status-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #4ade80;
+      border-radius: 50%;
+      margin-right: 6px;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    a {
+      color: white;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    a:hover {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">
+    <div class="logo-icon">⚡</div>
+    <h1>Salesforce SlipStream</h1>
+    <div class="version">v0.1.0 - MVP</div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-title">Quick Start</div>
+    <div class="info-content">
+      Open any Salesforce Lightning page and press:<br>
+      <span class="shortcut">F8</span> (easiest!)<br>
+      or <span class="shortcut">⌘ Cmd + Shift + L</span><br>
+      or <span class="shortcut">⌘ Cmd + Shift + Space</span><br>
+      <small>(Windows: use Ctrl instead of Cmd)</small>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="info-title">Current Release</div>
+    <div class="info-content">
+      ✅ Spotlight-style UI<br>
+      ✅ Keyboard shortcuts<br>
+      🚧 Command execution (v0.2.0)
+    </div>
+  </div>
+
+  <div class="status">
+    <span class="status-dot"></span>
+    Extension active on *.salesforce.com
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+# Development
+.DS_Store
+*.log
+npm-debug.log*
+
+# Editor directories
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.swp
+
+# Build artifacts (for future use)
+dist/
+build/
+
+# Dependencies (for future use)
+node_modules/
+
+# Documentation (exclude all markdown except README.md)
+*.md
+!README.md
+
+# Keep icon files but not icon docs
+!icons/*.png

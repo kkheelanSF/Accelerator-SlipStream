@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Salesforce SlipStream",
+  "version": "0.1.0",
+  "description": "Accelerate Salesforce development with a Spotlight-style command palette",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://*.salesforce.com/*",
+    "https://*.salesforce-sites.com/*",
+    "https://*.salesforce-setup.com/*",
+    "https://*.force.com/*",
+    "https://*.cloudforce.com/*",
+    "https://*.visualforce.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.lightning.force.com/*",
+        "https://*.lightning.salesforce.com/*",
+        "https://*.salesforce.com/*",
+        "https://*.salesforce-setup.com/*",
+        "https://*.my.salesforce.com/*",
+        "https://*.my.salesforce-setup.com/*",
+        "https://*.lightning.force.com/*",
+        "https://*.lightning.salesforce-sites.com/*",
+        "https://*.force.com/*",
+        "https://*.cloudforce.com/*",
+        "https://*.visualforce.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["spotlight-ui.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
+}

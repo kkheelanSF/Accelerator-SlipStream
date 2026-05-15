@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SlipStream Icon Generator</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f5f5f7;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1d1d1f;
+    }
+
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    .preview {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+
+    .icon-box {
+      text-align: center;
+    }
+
+    .icon-box canvas {
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .icon-box p {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #6e6e73;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    button {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .instructions {
+      background: #f5f5f7;
+      padding: 20px;
+      border-radius: 8px;
+      margin-top: 30px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .instructions h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚡ SlipStream Icon Generator</h1>
+
+    <div class="preview">
+      <div class="icon-box">
+        <canvas id="icon16" width="16" height="16"></canvas>
+        <p>16x16 (Toolbar)</p>
+      </div>
+      <div class="icon-box">
+        <canvas id="icon48" width="48" height="48"></canvas>
+        <p>48x48 (Extension)</p>
+      </div>
+      <div class="icon-box">
+        <canvas id="icon128" width="128" height="128"></canvas>
+        <p>128x128 (Store)</p>
+      </div>
+    </div>
+
+    <div class="buttons">
+      <button onclick="downloadIcon(16)">Download 16x16</button>
+      <button onclick="downloadIcon(48)">Download 48x48</button>
+      <button onclick="downloadIcon(128)">Download 128x128</button>
+    </div>
+
+    <div class="instructions">
+      <h3>📝 Instructions</h3>
+      <ol>
+        <li>Click each "Download" button to save the icon files</li>
+        <li>Save them as <code>icon16.png</code>, <code>icon48.png</code>, and <code>icon128.png</code></li>
+        <li>Move all three files to the <code>icons/</code> folder in your extension directory</li>
+        <li>Reload the extension in <code>chrome://extensions/</code></li>
+      </ol>
+      <p><strong>Note:</strong> Right-click each canvas above and select "Save image as..." if the download buttons don't work.</p>
+    </div>
+  </div>
+
+  <script>
+    // Draw icon on canvas
+    function drawIcon(canvas) {
+      const ctx = canvas.getContext('2d');
+      const size = canvas.width;
+
+      // Create gradient background
+      const gradient = ctx.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, '#667eea');
+      gradient.addColorStop(1, '#764ba2');
+
+      // Draw rounded rectangle background
+      const radius = size * 0.15;
+      ctx.fillStyle = gradient;
+      ctx.beginPath();
+      ctx.roundRect(0, 0, size, size, radius);
+      ctx.fill();
+
+      // Draw lightning bolt
+      ctx.fillStyle = 'white';
+      ctx.beginPath();
+
+      // Scale lightning bolt based on icon size
+      const scale = size / 128;
+      const centerX = size / 2;
+      const centerY = size / 2;
+
+      // Lightning bolt path (simplified for small sizes)
+      if (size === 16) {
+        // Simplified for 16px
+        ctx.fillStyle = 'white';
+        ctx.font = 'bold 12px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('⚡', centerX, centerY);
+      } else {
+        // Draw custom lightning bolt for larger sizes
+        const boltWidth = size * 0.35;
+        const boltHeight = size * 0.6;
+
+        ctx.translate(centerX, centerY);
+        ctx.beginPath();
+        ctx.moveTo(-boltWidth/4, -boltHeight/2);
+        ctx.lineTo(boltWidth/8, -boltHeight/8);
+        ctx.lineTo(-boltWidth/8, -boltHeight/8);
+        ctx.lineTo(boltWidth/4, boltHeight/2);
+        ctx.lineTo(-boltWidth/8, boltHeight/8);
+        ctx.lineTo(boltWidth/8, boltHeight/8);
+        ctx.closePath();
+        ctx.fill();
+        ctx.translate(-centerX, -centerY);
+      }
+    }
+
+    // Initialize all canvases
+    function initIcons() {
+      drawIcon(document.getElementById('icon16'));
+      drawIcon(document.getElementById('icon48'));
+      drawIcon(document.getElementById('icon128'));
+    }
+
+    // Download icon
+    function downloadIcon(size) {
+      const canvas = document.getElementById('icon' + size);
+      const link = document.createElement('a');
+      link.download = 'icon' + size + '.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+
+    // Polyfill for roundRect (if needed)
+    if (!CanvasRenderingContext2D.prototype.roundRect) {
+      CanvasRenderingContext2D.prototype.roundRect = function(x, y, width, height, radius) {
+        this.moveTo(x + radius, y);
+        this.lineTo(x + width - radius, y);
+        this.quadraticCurveTo(x + width, y, x + width, y + radius);
+        this.lineTo(x + width, y + height - radius);
+        this.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        this.lineTo(x + radius, y + height);
+        this.quadraticCurveTo(x, y + height, x, y + height - radius);
+        this.lineTo(x, y + radius);
+        this.quadraticCurveTo(x, y, x + radius, y);
+        return this;
+      };
+    }
+
+    // Draw icons on load
+    window.addEventListener('load', initIcons);
+  </script>
+</body>
+</html>

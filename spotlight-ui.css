@@ -1,0 +1,323 @@
+/**
+ * Salesforce SlipStream - Apple Spotlight-inspired UI
+ * Design System inspired by macOS Big Sur+ Spotlight
+ */
+
+/* Reset and base styles for extension */
+#slipstream-backdrop,
+#slipstream-container,
+#slipstream-backdrop *,
+#slipstream-container * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+/* Backdrop overlay */
+.slipstream-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 999998;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.slipstream-backdrop.slipstream-active {
+  opacity: 1;
+}
+
+/* Main container */
+.slipstream-container {
+  position: fixed;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -20px);
+  width: 640px;
+  max-width: 90vw;
+  max-height: 70vh;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 0.5px rgba(0, 0, 0, 0.08),
+    0 10px 50px rgba(0, 0, 0, 0.12),
+    0 30px 80px rgba(0, 0, 0, 0.15);
+  z-index: 999999;
+  opacity: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.slipstream-container.slipstream-active {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+/* Search box container */
+.slipstream-search-box {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  min-height: 68px;
+}
+
+/* Search icon - hidden */
+.slipstream-search-icon {
+  display: none;
+}
+
+/* Input field */
+.slipstream-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 18px;
+  font-weight: 400;
+  color: #1d1d1f;
+  line-height: 1.4;
+  caret-color: #667eea;
+  width: 100%;
+}
+
+/* Ensure cursor always blinks when visible */
+.slipstream-input:focus {
+  caret-color: #667eea;
+}
+
+.slipstream-input::placeholder {
+  color: #86868b;
+}
+
+/* Results container */
+.slipstream-results {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px;
+  display: none;
+}
+
+.slipstream-results::-webkit-scrollbar {
+  width: 8px;
+}
+
+.slipstream-results::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.slipstream-results::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.slipstream-results::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Result item */
+.slipstream-result-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  gap: 12px;
+}
+
+.slipstream-result-item:hover {
+  background: rgba(0, 122, 255, 0.08);
+}
+
+.slipstream-result-item.selected {
+  background: rgba(0, 122, 255, 0.12);
+}
+
+.slipstream-result-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.slipstream-result-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.slipstream-result-title {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1d1d1f;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slipstream-result-subtitle {
+  font-size: 13px;
+  color: #86868b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slipstream-result-shortcut {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.slipstream-key {
+  padding: 4px 8px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #6e6e73;
+  border: 0.5px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Empty state */
+.slipstream-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  text-align: center;
+  min-height: 280px;
+}
+
+.slipstream-empty-icon {
+  font-size: 56px;
+  margin-bottom: 20px;
+  opacity: 0.3;
+  line-height: 1;
+}
+
+.slipstream-empty-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.slipstream-empty-subtitle {
+  font-size: 14px;
+  color: #86868b;
+  line-height: 1.5;
+}
+
+/* Coming soon state */
+.slipstream-coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px;
+  text-align: center;
+  min-height: 280px;
+}
+
+.slipstream-coming-soon-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.slipstream-coming-soon-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 12px;
+}
+
+.slipstream-coming-soon-query {
+  font-size: 14px;
+  color: #86868b;
+  padding: 12px 20px;
+  background: rgba(0, 122, 255, 0.06);
+  border-radius: 8px;
+  margin-top: 8px;
+}
+
+.slipstream-coming-soon-query strong {
+  color: #007aff;
+  font-weight: 600;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .slipstream-container {
+    width: 90vw;
+    top: 10%;
+  }
+
+  .slipstream-input {
+    font-size: 16px;
+  }
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+  .slipstream-container {
+    background: rgba(30, 30, 30, 0.95);
+  }
+
+  .slipstream-input,
+  .slipstream-empty-title,
+  .slipstream-coming-soon-title,
+  .slipstream-result-title {
+    color: #f5f5f7;
+  }
+
+  .slipstream-search-box {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .slipstream-search-icon {
+    color: #98989d;
+  }
+
+  .slipstream-input::placeholder,
+  .slipstream-empty-subtitle,
+  .slipstream-coming-soon-query,
+  .slipstream-result-subtitle {
+    color: #98989d;
+  }
+
+  .slipstream-result-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .slipstream-result-item.selected {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  .slipstream-key {
+    background: rgba(255, 255, 255, 0.1);
+    color: #98989d;
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+}
