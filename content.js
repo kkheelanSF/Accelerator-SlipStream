@@ -86,8 +86,37 @@ class SlipStream {
   }
 
   handleCommand(command) {
-    // Placeholder for v0.2.0 - command execution
     console.log('Command received:', command);
+
+    // Parse command
+    const parser = new CommandParser();
+    const matches = parser.parse(command);
+
+    if (matches.length > 0) {
+      const match = matches[0];
+      const validation = parser.validate(match);
+
+      if (!validation.valid) {
+        console.error('Invalid command:', validation.error);
+        return;
+      }
+
+      // Execute command
+      const urlBuilder = new URLBuilder();
+      const success = urlBuilder.executeCommand(
+        match.command.handler,
+        match.params
+      );
+
+      if (success) {
+        console.log('✅ Command executed successfully');
+      } else {
+        console.error('❌ Command execution failed');
+      }
+    } else {
+      console.log('No matching command found');
+    }
+
     this.close();
   }
 }
@@ -100,6 +129,7 @@ class SpotlightUI {
     this.slipStream = slipStream;
     this.selectedIndex = 0;
     this.filteredCommands = [];
+    this.commandParser = new CommandParser();
     this.createUI();
     this.attachEventListeners();
   }
@@ -170,8 +200,14 @@ class SpotlightUI {
       return;
     }
 
-    // Placeholder: Show "coming soon" message for now
-    this.showComingSoonState(query);
+    // Get command suggestions
+    const suggestions = this.commandParser.getSuggestions(query);
+
+    if (suggestions.length > 0) {
+      this.showSuggestions(suggestions);
+    } else {
+      this.showNoResults(query);
+    }
   }
 
   handleKeyDown(event) {
@@ -200,15 +236,37 @@ class SpotlightUI {
   }
 
   selectNext() {
-    // Placeholder for v0.2.0
+    if (this.filteredCommands.length === 0) return;
+
+    this.selectedIndex = (this.selectedIndex + 1) % this.filteredCommands.length;
+    this.updateSelection();
   }
 
   selectPrevious() {
-    // Placeholder for v0.2.0
+    if (this.filteredCommands.length === 0) return;
+
+    this.selectedIndex = (this.selectedIndex - 1 + this.filteredCommands.length) % this.filteredCommands.length;
+    this.updateSelection();
   }
 
   executeSelected() {
-    // Placeholder for v0.2.0
+    if (this.filteredCommands.length === 0) return;
+
+    const selected = this.filteredCommands[this.selectedIndex];
+    if (selected && selected.example) {
+      this.slipStream.handleCommand(selected.example);
+    }
+  }
+
+  updateSelection() {
+    const items = this.resultsContainer.querySelectorAll('.slipstream-result-item');
+    items.forEach((item, index) => {
+      if (index === this.selectedIndex) {
+        item.classList.add('selected');
+      } else {
+        item.classList.remove('selected');
+      }
+    });
   }
 
   showEmptyState() {
@@ -217,14 +275,48 @@ class SpotlightUI {
     this.emptyState.style.display = 'flex';
   }
 
-  showComingSoonState(query) {
+  showSuggestions(suggestions) {
     this.emptyState.style.display = 'none';
     this.resultsContainer.style.display = 'block';
+    this.filteredCommands = suggestions;
+    this.selectedIndex = 0;
+
+    let html = '';
+    suggestions.forEach((suggestion, index) => {
+      const isSelected = index === 0 ? 'selected' : '';
+      html += `
+        <div class="slipstream-result-item ${isSelected}" data-index="${index}">
+          <div class="slipstream-result-icon">⚡</div>
+          <div class="slipstream-result-content">
+            <div class="slipstream-result-title">${this.escapeHtml(suggestion.example)}</div>
+            <div class="slipstream-result-description">${this.escapeHtml(suggestion.command.description)}</div>
+          </div>
+          <div class="slipstream-result-category">${this.escapeHtml(suggestion.command.category)}</div>
+        </div>
+      `;
+    });
+
+    this.resultsContainer.innerHTML = html;
+
+    // Add click handlers
+    const items = this.resultsContainer.querySelectorAll('.slipstream-result-item');
+    items.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        this.selectedIndex = index;
+        this.executeSelected();
+      });
+    });
+  }
+
+  showNoResults(query) {
+    this.emptyState.style.display = 'none';
+    this.resultsContainer.style.display = 'block';
+    this.filteredCommands = [];
     this.resultsContainer.innerHTML = `
-      <div class="slipstream-coming-soon">
-        <div class="slipstream-coming-soon-icon">🚧</div>
-        <div class="slipstream-coming-soon-title">Command execution coming in v0.2.0</div>
-        <div class="slipstream-coming-soon-query">You typed: <strong>${this.escapeHtml(query)}</strong></div>
+      <div class="slipstream-no-results">
+        <div class="slipstream-no-results-icon">🔍</div>
+        <div class="slipstream-no-results-title">No commands found</div>
+        <div class="slipstream-no-results-query">Try: "open setup" or "open dev console"</div>
       </div>
     `;
   }

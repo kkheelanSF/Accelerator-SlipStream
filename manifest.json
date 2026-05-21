@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Salesforce SlipStream",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Accelerate Salesforce development with a Spotlight-style command palette",
   "permissions": [
     "activeTab",
@@ -30,7 +30,7 @@
         "https://*.cloudforce.com/*",
         "https://*.visualforce.com/*"
       ],
-      "js": ["content.js"],
+      "js": ["command-parser.js", "url-builder.js", "content.js"],
       "css": ["spotlight-ui.css"],
       "run_at": "document_idle"
     }
