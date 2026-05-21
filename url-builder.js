@@ -6,6 +6,7 @@
 class URLBuilder {
   constructor() {
     this.baseUrl = this.detectBaseUrl();
+    console.log('🔧 URLBuilder initialized with baseUrl:', this.baseUrl);
   }
 
   /**
@@ -13,32 +14,39 @@ class URLBuilder {
    */
   detectBaseUrl() {
     const hostname = window.location.hostname;
+    const origin = window.location.origin;
 
-    // Extract instance from various Salesforce URL formats
+    // Preserve the exact format of the current URL
     // Examples:
-    // - na1.lightning.force.com -> na1
-    // - mycompany.lightning.force.com -> mycompany
-    // - mycompany.my.salesforce.com -> mycompany
+    // - company.lightning.force.com → use as-is
+    // - company.sandbox.my.salesforce.com → use as-is
+    // - company.my.salesforce.com → use as-is
+    // - company.sandbox.my.salesforce-setup.com → use as-is
 
-    if (hostname.includes('.lightning.force.com')) {
-      const instance = hostname.split('.')[0];
-      return `https://${instance}.lightning.force.com`;
+    // For Lightning URLs, just use the current origin
+    if (hostname.includes('.lightning.') ||
+        hostname.includes('.my.salesforce') ||
+        hostname.includes('.salesforce-setup.com')) {
+      return origin;
     }
 
-    if (hostname.includes('.my.salesforce.com')) {
-      const instance = hostname.split('.')[0];
-      return `https://${instance}.lightning.force.com`;
-    }
-
+    // For Classic URLs, try to convert to Lightning
     if (hostname.includes('.salesforce.com')) {
-      // Extract instance from Classic URL
+      // Classic format: company.salesforce.com
       const parts = hostname.split('.');
       const instance = parts[0];
+
+      // Check if it's a sandbox by looking at URL patterns
+      if (window.location.href.includes('--')) {
+        // Enhanced domain format (e.g., company--sandbox.my.salesforce.com)
+        return origin;
+      }
+
       return `https://${instance}.lightning.force.com`;
     }
 
-    // Fallback to current protocol + hostname
-    return `${window.location.protocol}//${hostname}`;
+    // Fallback: use current origin
+    return origin;
   }
 
   /**
@@ -56,17 +64,42 @@ class URLBuilder {
   }
 
   /**
+   * Get the correct base URL for Setup pages
+   * Sandboxes may need salesforce-setup.com domain
+   */
+  getSetupBaseUrl() {
+    const hostname = window.location.hostname;
+
+    // If we're already on a salesforce-setup.com domain, use current origin
+    if (hostname.includes('.salesforce-setup.com')) {
+      return window.location.origin;
+    }
+
+    // If on a sandbox (my.salesforce.com with sandbox in the name)
+    if (hostname.includes('.sandbox.my.salesforce.com')) {
+      // Convert to salesforce-setup.com
+      return window.location.origin.replace('.my.salesforce.com', '.my.salesforce-setup.com');
+    }
+
+    // For other cases, use the base URL as-is
+    return this.baseUrl;
+  }
+
+  /**
    * Setup Home
    */
   openSetup() {
-    return `${this.baseUrl}/lightning/setup/SetupOneHome/home`;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    console.log('🔗 Navigating to Setup with URL:', setupBaseUrl);
+    return `${setupBaseUrl}/lightning/setup/SetupOneHome/home`;
   }
 
   /**
    * Object Manager
    */
   openObjectManager() {
-    return `${this.baseUrl}/lightning/setup/ObjectManager/home`;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ObjectManager/home`;
   }
 
   /**
@@ -74,7 +107,8 @@ class URLBuilder {
    */
   openSetupObject(params) {
     const { objectName } = params;
-    return `${this.baseUrl}/lightning/setup/ObjectManager/${objectName}/Details/view`;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ObjectManager/${objectName}/Details/view`;
   }
 
   /**
@@ -82,7 +116,8 @@ class URLBuilder {
    */
   openSetupObjectFields(params) {
     const { objectName } = params;
-    return `${this.baseUrl}/lightning/setup/ObjectManager/${objectName}/FieldsAndRelationships/view`;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ObjectManager/${objectName}/FieldsAndRelationships/view`;
   }
 
   /**
@@ -90,9 +125,10 @@ class URLBuilder {
    */
   openSetupObjectField(params) {
     const { objectName, fieldName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
     // Field URLs typically need the field ID, but we can use the field name in Quick Find
     // This navigates to Fields page and we'll need to search for the field
-    return `${this.baseUrl}/lightning/setup/ObjectManager/${objectName}/FieldsAndRelationships/view`;
+    return `${setupBaseUrl}/lightning/setup/ObjectManager/${objectName}/FieldsAndRelationships/view`;
   }
 
   /**
@@ -100,9 +136,10 @@ class URLBuilder {
    */
   openSetupObjectLayout(params) {
     const { objectName, layoutName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
     // Page layouts require the layout ID which we don't have
     // Navigate to page layouts list and user can select
-    return `${this.baseUrl}/lightning/setup/ObjectManager/${objectName}/PageLayouts/view`;
+    return `${setupBaseUrl}/lightning/setup/ObjectManager/${objectName}/PageLayouts/view`;
   }
 
   /**
@@ -110,9 +147,10 @@ class URLBuilder {
    */
   openSetupObjectFlexiPage(params) {
     const { objectName, flexiPageName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
     // Lightning pages are accessed through Lightning App Builder
     // We'll navigate to the Lightning Pages list
-    return `${this.baseUrl}/lightning/setup/FlexiPageList/home`;
+    return `${setupBaseUrl}/lightning/setup/FlexiPageList/home`;
   }
 
   /**
@@ -120,7 +158,8 @@ class URLBuilder {
    */
   openSetupObjectValidationRules(params) {
     const { objectName } = params;
-    return `${this.baseUrl}/lightning/setup/ObjectManager/${objectName}/ValidationRules/view`;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ObjectManager/${objectName}/ValidationRules/view`;
   }
 
   /**
@@ -128,7 +167,8 @@ class URLBuilder {
    */
   openSetupObjectCompactLayouts(params) {
     const { objectName } = params;
-    return `${this.baseUrl}/lightning/setup/ObjectManager/${objectName}/CompactLayouts/view`;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ObjectManager/${objectName}/CompactLayouts/view`;
   }
 
   /**
@@ -136,7 +176,8 @@ class URLBuilder {
    */
   openSetupObjectRecordTypes(params) {
     const { objectName } = params;
-    return `${this.baseUrl}/lightning/setup/ObjectManager/${objectName}/RecordTypes/view`;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ObjectManager/${objectName}/RecordTypes/view`;
   }
 
   /**
@@ -176,9 +217,12 @@ class URLBuilder {
    */
   navigate(url, newTab = false) {
     if (!url) {
-      console.error('Invalid URL');
+      console.error('❌ Invalid URL - cannot navigate');
       return false;
     }
+
+    console.log(`🔗 Navigating to: ${url}`);
+    console.log(`📍 Open in new tab: ${newTab}`);
 
     if (newTab) {
       window.open(url, '_blank');
@@ -193,9 +237,12 @@ class URLBuilder {
    * Execute command by handler name
    */
   executeCommand(handlerName, params = {}, openInNewTab = false) {
+    console.log(`⚡ Executing command: ${handlerName}`, params);
+
     const url = this.build(handlerName, params);
 
     if (!url) {
+      console.error(`❌ Failed to build URL for handler: ${handlerName}`);
       return false;
     }
 
