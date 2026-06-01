@@ -230,21 +230,57 @@ class URLBuilder {
   openSetupObjectFlexiPages(params) {
     const { objectName } = params;
     const setupBaseUrl = this.getSetupBaseUrl();
-    // Navigate to Lightning Pages list filtered by object
-    return `${setupBaseUrl}/lightning/setup/FlexiPageList/home`;
+    // Navigate to Lightning Pages list for the specific object
+    return `${setupBaseUrl}/lightning/setup/ObjectManager/${objectName}/LightningPages/view`;
   }
 
   /**
-   * Setup Object FlexiPage (specific Lightning Page)
+   * Setup Object FlexiPage (specific Lightning Page) - Legacy, opens list
    */
   openSetupObjectFlexiPage(params) {
     const { objectName, flexiPageName } = params;
     const setupBaseUrl = this.getSetupBaseUrl();
-    // LIMITATION: Lightning page URLs require the page ID which we don't have
-    // Direct URL format would be: /lightning/setup/FlexiPageList/page?nodeId=${flexiPageId}
-    // Since we only have the page name, we navigate to the Lightning Pages list
-    // TODO: In future, could implement page search/filtering via query parameter if Salesforce supports it
-    return `${setupBaseUrl}/lightning/setup/FlexiPageList/home`;
+    // Navigate to Lightning Pages list for the object
+    return `${setupBaseUrl}/lightning/setup/ObjectManager/${objectName}/LightningPages/view`;
+  }
+
+  /**
+   * Setup Object FlexiPage Direct (with FlexiPage ID lookup)
+   */
+  async openSetupObjectFlexiPageDirect(params) {
+    const { objectName, flexiPageName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+
+    // Get metadata cache
+    const metadataCache = new MetadataCache();
+    await metadataCache.init();
+
+    // Query all FlexiPages for the object
+    const flexiPages = await metadataCache.getFlexiPages(objectName);
+
+    if (flexiPages && flexiPages.length > 0) {
+      // Find FlexiPage by name (case-insensitive, partial match)
+      const page = flexiPages.find(p =>
+        (p.name && p.name.toLowerCase().includes(flexiPageName.toLowerCase())) ||
+        (p.label && p.label.toLowerCase().includes(flexiPageName.toLowerCase())) ||
+        flexiPageName.toLowerCase().includes((p.name || '').toLowerCase()) ||
+        flexiPageName.toLowerCase().includes((p.label || '').toLowerCase())
+      );
+
+      if (page && page.id) {
+        // Truncate ID to 15 characters for URL
+        const shortId = page.id.substring(0, 15);
+        console.log(`✅ Found FlexiPage ID: ${page.id} → ${shortId}, navigating directly`);
+        return `${setupBaseUrl}/lightning/setup/ObjectManager/${objectName}/LightningPages/${shortId}/view`;
+      } else {
+        console.warn(`⚠️ FlexiPage not found, falling back to list`);
+      }
+    } else {
+      console.warn(`⚠️ No FlexiPages found, falling back to list`);
+    }
+
+    // Fallback to FlexiPages list
+    return `${setupBaseUrl}/lightning/setup/ObjectManager/${objectName}/LightningPages/view`;
   }
 
   /**

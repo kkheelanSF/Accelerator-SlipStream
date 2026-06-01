@@ -17,7 +17,9 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(awk '{print $9, \"-\", $5}')",
-      "Bash(awk -F',' '{print \"✅\", $2}')"
+      "Bash(awk -F',' '{print \"✅\", $2}')",
+      "Bash(git tag -a v0.4.0 -m 'Release v0.4.0 - Direct Field & Layout Navigation *)",
+      "Bash(git push *)"
     ]
   }
 }

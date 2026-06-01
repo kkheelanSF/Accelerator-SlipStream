@@ -1,23 +1,20 @@
-Second Keyword,Full Command Example,Description/Achievement,To Implement?,Keyword,Implemented?,CHANGES?,Test Success?,Test Comment
+Second Keyword,Full Command Example,Description/Achievement,To Implement?,Keyword,Implemented?,Redirect Link,Test Success?,Test Comment
 setup,open setup,Navigate to Setup home page,TRUE,open,TRUE,,Yes,
 setup home,open setup home,Navigate to Setup home page (alias),TRUE,open,TRUE,,Yes,
 setup quick find,open setup quick find [term],Quick Find search in Setup,TRUE,open,FALSE,,,
 object manager,open object manager,Navigate to Object Manager,TRUE,open,TRUE,,Yes,
-setup {Object},open setup Account,Navigate to specific object in Object Manager,TRUE,open,TRUE,,"Yes, Partial",Issue - Not opening in the new tab
-setup {Object} Fields,open setup Account Fields,Navigate to Fields & Relationships for object,TRUE,open,TRUE,,"Yes, Partial",Issue - Not opening in the new tab
-setup {Object} Field {Field},open setup Account Field Industry,Navigate to specific field details,TRUE,open,TRUE,"",Needs Testing,Fixed - Now looks up field ID and navigates directly to field setup page
+setup {Object},open setup Account,Navigate to specific object in Object Manager,TRUE,open,TRUE,,"Yes, Partial",
+setup {Object} Fields,open setup Account Fields,Navigate to Fields & Relationships for object,TRUE,open,TRUE,,"Yes, Partial",
+setup {Object} Field {Field},open setup Account Field Industry,Navigate to specific field details,TRUE,open,TRUE,,Needs Testing,
 setup {Object} Layouts,open setup Account Layouts,Navifate to layouts home,TRUE,"open ",TRUE,,,
-setup {Object} Layout {Layout},open setup Account Layout Standard,Navigate to specific page layout editor,TRUE,open,TRUE,,No,"Issue - Doesn't open the particular layout, opens layout home
-Issue2 - Doesn't filter for all the layouts, only one layout it is showing"
-setup {Object} FlexiPages,open setup Account FlexiPages,Navigate to lightning record pages home,TRUE,open,TRUE,,,
-setup {Object} FlexiPage {FlexiPage},open setup Account FlexiPage Account_Record_Page,Navigate to Lightning page builder for specific page,TRUE,open,TRUE,"Yes, Changed the keyword from 'Flexi Page' to 'FlexiPage'",No,"Issue - Doesn't open the particular layout
-Issue2 - Doesn't filter for all the layouts
-"," opens layout home"
-setup {Object} ValidationRules,open setup Account ValidationRules,Navigate to validation rules list for object,TRUE,open,TRUE,"Yes, Changed the keyword from 'Validation Rules' to 'ValidationRules'",Yes,," only one layout it is showing"
+setup {Object} Layout {Layout},open setup Account Layout Standard,Navigate to specific page layout editor,TRUE,open,TRUE,,No,""
+setup {Object} FlexiPages,open setup Account FlexiPages,Navigate to lightning record pages home,TRUE,open,TRUE,"Yes, URL pattern updated to ObjectManager/{Object}/LightningPages/view",Needs Testing,Fixed - Now uses correct object-specific Lightning Pages URL
+setup {Object} FlexiPage {FlexiPage},open setup Account FlexiPage Account_Record_Page,Navigate to Lightning page builder for specific page,TRUE,open,TRUE,"Yes, Now uses API to lookup FlexiPage ID",Needs Testing,Fixed - Now looks up FlexiPage ID and navigates directly to page builder
+setup {Object} ValidationRules,open setup Account ValidationRules,Navigate to validation rules list for object,TRUE,open,TRUE,,Yes,
 setup {Object} Triggers,open setup Account Triggers,Navigate to triggers list for object,TRUE,open,FALSE,,,
 setup {Object} Buttons,open setup Account Buttons,Navigate to buttons and links for object,TRUE,open,FALSE,,,
-setup {Object} CompactLayouts,open setup Account CompactLayouts,Navigate to compact layouts for object,TRUE,open,TRUE,"Yes, changed keyword from 'Compact Layouts' to 'CompactLayouts'",,
-setup {Object} RecordTypes,open setup Account RecordTypes,Navigate to record types for object,TRUE,open,TRUE,"Yes, changed keyword from 'Record Types' to 'RecordTypes'",,
+setup {Object} CompactLayouts,open setup Account CompactLayouts,Navigate to compact layouts for object,TRUE,open,TRUE,,,
+setup {Object} RecordTypes,open setup Account RecordTypes,Navigate to record types for object,TRUE,open,TRUE,,,
 dev console,open dev console,Open Salesforce Developer Console in new tab,TRUE,open,TRUE,,,
 developer console,open developer console,Open Salesforce Developer Console (alias),TRUE,open,TRUE,,,
 debug logs,open debug logs,Navigate to Debug Logs page,FALSE,open,FALSE,,,

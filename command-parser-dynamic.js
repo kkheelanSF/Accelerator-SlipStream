@@ -201,6 +201,13 @@ class DynamicCommandParser {
         });
       }
 
+      // open setup Account FlexiPage [PageName]
+      if (subCommand === 'flexipage' && parts.length >= 5) {
+        const pageQuery = parts.slice(4).join(' '); // FlexiPage names can have spaces
+        const pageSuggestions = await this.suggestFlexiPages(objectName, pageQuery);
+        suggestions.push(...pageSuggestions);
+      }
+
       // open setup Account ValidationRules
       if (subCommand === 'validationrules') {
         suggestions.push({
@@ -319,6 +326,40 @@ class DynamicCommandParser {
         category: 'Fields',
         handler: 'openSetupObjectFieldDirect',
         params: { objectName, fieldApiName: field.name },
+        score: 800
+      });
+    }
+
+    return suggestions;
+  }
+
+  /**
+   * Suggest matching FlexiPages for an object
+   */
+  async suggestFlexiPages(objectName, pageQuery) {
+    const suggestions = [];
+
+    // Get all FlexiPages for the object
+    const pages = await this.metadataCache.getFlexiPages(objectName);
+
+    if (!pages || pages.length === 0) {
+      return suggestions;
+    }
+
+    // Filter pages by query (search in name or label)
+    const lowerQuery = pageQuery.toLowerCase();
+    const matchedPages = pages.filter(page => {
+      return (page.name && page.name.toLowerCase().includes(lowerQuery)) ||
+             (page.label && page.label.toLowerCase().includes(lowerQuery));
+    });
+
+    for (const page of matchedPages.slice(0, 10)) {
+      suggestions.push({
+        command: `open setup ${objectName} FlexiPage ${page.name}`,
+        description: `${page.label} (${page.name})`,
+        category: 'Lightning Pages',
+        handler: 'openSetupObjectFlexiPageDirect',
+        params: { objectName, flexiPageName: page.name },
         score: 800
       });
     }

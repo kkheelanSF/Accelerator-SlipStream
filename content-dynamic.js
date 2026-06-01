@@ -105,6 +105,7 @@ class SlipStream {
       'openSetupObjectLayoutDirect',
       'openSetupObjectFlexiPages',
       'openSetupObjectFlexiPage',
+      'openSetupObjectFlexiPageDirect',
       'openSetupObjectValidationRules',
       'openSetupObjectTriggers',
       'openSetupObjectButtons',

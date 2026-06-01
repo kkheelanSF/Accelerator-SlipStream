@@ -106,7 +106,7 @@ class CommandParser {
         pattern: /^open\s+setup\s+(\w+)\s+flexipage\s+(.+)$/i,
         description: 'Navigate to Lightning page builder for specific page',
         category: 'Object Manager',
-        handler: 'openSetupObjectFlexiPage',
+        handler: 'openSetupObjectFlexiPageDirect',
         examples: ['open setup Account FlexiPage Account_Record_Page'],
         paramNames: ['objectName', 'flexiPageName']
       },
