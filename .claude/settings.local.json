@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i '' 's/,Navigate to Setup home page \\(alias\\),TRUE,open,FALSE/,Navigate to Setup home page \\(alias\\),TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(sed -i '' 's/,Navigate to Object Manager,TRUE,open,FALSE/,Navigate to Object Manager,TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(sed -i '' 's/,Navigate to specific object in Object Manager,TRUE,open,FALSE/,Navigate to specific object in Object Manager,TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(sed -i '' 's/,Navigate to Fields & Relationships for object,TRUE,open,FALSE/,Navigate to Fields & Relationships for object,TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(sed -i '' 's/,Navigate to specific field details,TRUE,open,FALSE/,Navigate to specific field details,TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(sed -i '' 's/,Navigate to specific page layout editor,TRUE,open,FALSE/,Navigate to specific page layout editor,TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(sed -i '' 's/,Navigate to Lightning page builder for specific page,TRUE,open,FALSE/,Navigate to Lightning page builder for specific page,TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(sed -i '' 's/,Navigate to validation rules list for object,TRUE,open,FALSE/,Navigate to validation rules list for object,TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(sed -i '' 's/,Navigate to compact layouts for object,TRUE,open,FALSE/,Navigate to compact layouts for object,TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(sed -i '' 's/,Navigate to record types for object,TRUE,open,FALSE/,Navigate to record types for object,TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(sed -i '' 's/,Open Salesforce Developer Console in new tab,TRUE,open,FALSE/,Open Salesforce Developer Console in new tab,TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(sed -i '' 's/,Open Salesforce Developer Console \\(alias\\),TRUE,open,FALSE/,Open Salesforce Developer Console \\(alias\\),TRUE,open,TRUE/' COMMAND_KEYWORDS.csv)",
+      "Bash(awk 'NR==7' COMMAND_KEYWORDS.csv)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(awk '{print $9, \"-\", $5}')",
+      "Bash(awk -F',' '{print \"✅\", $2}')"
+    ]
+  }
+}

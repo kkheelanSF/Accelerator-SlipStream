@@ -1,46 +1,44 @@
 /**
- * Salesforce SlipStream - Content Script
- * Handles keyboard shortcuts and UI injection
+ * Salesforce SlipStream - Content Script (Dynamic Version)
+ * Handles keyboard shortcuts and UI injection with dynamic metadata
  */
 
 class SlipStream {
   constructor() {
     this.isOpen = false;
     this.spotlightUI = null;
+    this.parser = null;
     this.init();
   }
 
-  init() {
+  async init() {
     // Listen for keyboard shortcut
     document.addEventListener('keydown', (e) => this.handleKeyPress(e));
-    console.log('🚀 Salesforce SlipStream loaded');
+
+    // Initialize dynamic parser
+    this.parser = new DynamicCommandParser();
+    // Start initialization in background
+    this.parser.init().then(() => {
+      console.log('✅ Dynamic parser initialized');
+    }).catch(err => {
+      console.error('❌ Failed to initialize parser:', err);
+    });
+
+    console.log('🚀 Salesforce SlipStream loaded (Dynamic Mode)');
   }
 
   handleKeyPress(event) {
-    // Debug: Log all key presses with modifiers
-    if (event.metaKey || event.ctrlKey) {
-      console.log('🔑 Key pressed:', {
-        key: event.key,
-        code: event.code,
-        metaKey: event.metaKey,
-        ctrlKey: event.ctrlKey,
-        shiftKey: event.shiftKey,
-        altKey: event.altKey
-      });
-    }
-
     // Primary trigger: CMD+Shift+L (Mac) or Ctrl+Shift+L (Windows/Linux)
-    // Changed from K to L to avoid conflicts
     const isTriggerL = (event.metaKey || event.ctrlKey) && event.shiftKey &&
                        (event.key === 'L' || event.key === 'l');
 
-    // Alternative trigger: CMD+Shift+Space (easier to press)
+    // Alternative trigger: CMD+Shift+Space
     const isTriggerSpace = (event.metaKey || event.ctrlKey) && event.shiftKey && event.key === ' ';
 
-    // Test trigger: F8 (no modifiers needed - easiest to test!)
+    // Test trigger: F8
     const isTriggerF8 = event.key === 'F8';
 
-    // Legacy trigger: CMD+Shift+K (in case it works for you)
+    // Legacy trigger: CMD+Shift+K
     const isTriggerK = (event.metaKey || event.ctrlKey) && event.shiftKey &&
                        (event.key === 'K' || event.key === 'k');
 
@@ -85,60 +83,48 @@ class SlipStream {
     this.isOpen = false;
   }
 
-  handleCommand(command) {
-    console.log('Command received:', command);
+  async handleCommand(suggestion) {
+    console.log('Command received:', suggestion);
 
-    // Parse command
-    const parser = new CommandParser();
-    const matches = parser.parse(command);
+    if (!suggestion || !suggestion.handler) {
+      console.error('Invalid command');
+      return;
+    }
 
-    if (matches.length > 0) {
-      const match = matches[0];
-      const validation = parser.validate(match);
+    // Determine if command should open in new tab
+    const newTabHandlers = [
+      'openSetup',
+      'openSetupQuickFind',
+      'openObjectManager',
+      'openSetupObject',
+      'openSetupObjectFields',
+      'openSetupObjectField',
+      'openSetupObjectFieldDirect',
+      'openSetupObjectLayouts',
+      'openSetupObjectLayout',
+      'openSetupObjectLayoutDirect',
+      'openSetupObjectFlexiPages',
+      'openSetupObjectFlexiPage',
+      'openSetupObjectValidationRules',
+      'openSetupObjectTriggers',
+      'openSetupObjectButtons',
+      'openSetupObjectCompactLayouts',
+      'openSetupObjectRecordTypes'
+    ];
+    const openInNewTab = newTabHandlers.includes(suggestion.handler);
 
-      if (!validation.valid) {
-        console.error('Invalid command:', validation.error);
-        return;
-      }
+    // Execute command
+    const urlBuilder = new URLBuilder();
+    const success = await urlBuilder.executeCommand(
+      suggestion.handler,
+      suggestion.params,
+      openInNewTab
+    );
 
-      // Determine if command should open in new tab
-      // All Setup navigation commands should open in new tab to preserve current work
-      const newTabHandlers = [
-        'openSetup',
-        'openSetupQuickFind',
-        'openObjectManager',
-        'openSetupObject',
-        'openSetupObjectFields',
-        'openSetupObjectField',
-        'openSetupObjectFieldDirect',
-        'openSetupObjectLayouts',
-        'openSetupObjectLayout',
-        'openSetupObjectLayoutDirect',
-        'openSetupObjectFlexiPages',
-        'openSetupObjectFlexiPage',
-        'openSetupObjectValidationRules',
-        'openSetupObjectTriggers',
-        'openSetupObjectButtons',
-        'openSetupObjectCompactLayouts',
-        'openSetupObjectRecordTypes'
-      ];
-      const openInNewTab = newTabHandlers.includes(match.command.handler);
-
-      // Execute command
-      const urlBuilder = new URLBuilder();
-      const success = urlBuilder.executeCommand(
-        match.command.handler,
-        match.params,
-        openInNewTab
-      );
-
-      if (success) {
-        console.log('✅ Command executed successfully');
-      } else {
-        console.error('❌ Command execution failed');
-      }
+    if (success) {
+      console.log('✅ Command executed successfully');
     } else {
-      console.log('No matching command found');
+      console.error('❌ Command execution failed');
     }
 
     this.close();
@@ -146,14 +132,13 @@ class SlipStream {
 }
 
 /**
- * Spotlight UI Component
+ * Spotlight UI Component (Dynamic Version)
  */
 class SpotlightUI {
   constructor(slipStream) {
     this.slipStream = slipStream;
     this.selectedIndex = 0;
-    this.filteredCommands = [];
-    this.commandParser = new CommandParser();
+    this.suggestions = [];
     this.createUI();
     this.attachEventListeners();
   }
@@ -173,11 +158,11 @@ class SpotlightUI {
     this.searchBox = document.createElement('div');
     this.searchBox.className = 'slipstream-search-box';
 
-    // Input field (no icon)
+    // Input field
     this.input = document.createElement('input');
     this.input.type = 'text';
     this.input.className = 'slipstream-input';
-    this.input.placeholder = 'Type a command...';
+    this.input.placeholder = 'Type a command... (e.g., "open setup Account")';
     this.input.autocomplete = 'off';
     this.input.spellcheck = false;
 
@@ -187,6 +172,14 @@ class SpotlightUI {
     this.resultsContainer = document.createElement('div');
     this.resultsContainer.className = 'slipstream-results';
 
+    // Create loading state
+    this.loadingState = document.createElement('div');
+    this.loadingState.className = 'slipstream-loading';
+    this.loadingState.innerHTML = `
+      <div class="slipstream-loading-icon">⏳</div>
+      <div class="slipstream-loading-text">Loading metadata...</div>
+    `;
+
     // Create empty state
     this.emptyState = document.createElement('div');
     this.emptyState.className = 'slipstream-empty-state';
@@ -194,14 +187,14 @@ class SpotlightUI {
       <div class="slipstream-empty-icon">⌘</div>
       <div class="slipstream-empty-title">Salesforce SlipStream</div>
       <div class="slipstream-empty-subtitle">Type a command to get started</div>
+      <div class="slipstream-empty-hint">Try: "open setup Account" or "open dev console"</div>
     `;
 
     // Assemble UI
     this.container.appendChild(this.searchBox);
     this.container.appendChild(this.resultsContainer);
+    this.container.appendChild(this.loadingState);
     this.container.appendChild(this.emptyState);
-
-    // Don't append to DOM yet - will be added on show()
   }
 
   attachEventListeners() {
@@ -216,26 +209,34 @@ class SpotlightUI {
     this.container.addEventListener('click', (e) => e.stopPropagation());
   }
 
-  handleInput(event) {
-    const query = event.target.value.trim();
+  async handleInput(event) {
+    const query = event.target.value;
 
     if (query.length === 0) {
       this.showEmptyState();
       return;
     }
 
-    // Get command suggestions
-    const suggestions = this.commandParser.getSuggestions(query);
+    // Show loading state
+    this.showLoading();
 
-    if (suggestions.length > 0) {
-      this.showSuggestions(suggestions);
-    } else {
-      this.showNoResults(query);
+    try {
+      // Get suggestions from dynamic parser
+      const suggestions = await this.slipStream.parser.parse(query);
+
+      if (suggestions && suggestions.length > 0) {
+        this.showSuggestions(suggestions);
+      } else {
+        this.showNoResults(query);
+      }
+    } catch (error) {
+      console.error('Error parsing command:', error);
+      this.showError();
     }
   }
 
   handleKeyDown(event) {
-    const resultsVisible = this.resultsContainer.children.length > 0;
+    const resultsVisible = this.suggestions.length > 0;
 
     switch (event.key) {
       case 'ArrowDown':
@@ -260,25 +261,25 @@ class SpotlightUI {
   }
 
   selectNext() {
-    if (this.filteredCommands.length === 0) return;
+    if (this.suggestions.length === 0) return;
 
-    this.selectedIndex = (this.selectedIndex + 1) % this.filteredCommands.length;
+    this.selectedIndex = (this.selectedIndex + 1) % this.suggestions.length;
     this.updateSelection();
   }
 
   selectPrevious() {
-    if (this.filteredCommands.length === 0) return;
+    if (this.suggestions.length === 0) return;
 
-    this.selectedIndex = (this.selectedIndex - 1 + this.filteredCommands.length) % this.filteredCommands.length;
+    this.selectedIndex = (this.selectedIndex - 1 + this.suggestions.length) % this.suggestions.length;
     this.updateSelection();
   }
 
   executeSelected() {
-    if (this.filteredCommands.length === 0) return;
+    if (this.suggestions.length === 0) return;
 
-    const selected = this.filteredCommands[this.selectedIndex];
-    if (selected && selected.example) {
-      this.slipStream.handleCommand(selected.example);
+    const selected = this.suggestions[this.selectedIndex];
+    if (selected) {
+      this.slipStream.handleCommand(selected);
     }
   }
 
@@ -287,35 +288,45 @@ class SpotlightUI {
     items.forEach((item, index) => {
       if (index === this.selectedIndex) {
         item.classList.add('selected');
+        item.scrollIntoView({ block: 'nearest' });
       } else {
         item.classList.remove('selected');
       }
     });
   }
 
-  showEmptyState() {
-    this.resultsContainer.innerHTML = '';
+  showLoading() {
     this.resultsContainer.style.display = 'none';
+    this.emptyState.style.display = 'none';
+    this.loadingState.style.display = 'flex';
+  }
+
+  showEmptyState() {
+    this.resultsContainer.style.display = 'none';
+    this.loadingState.style.display = 'none';
     this.emptyState.style.display = 'flex';
   }
 
   showSuggestions(suggestions) {
+    this.loadingState.style.display = 'none';
     this.emptyState.style.display = 'none';
     this.resultsContainer.style.display = 'block';
-    this.filteredCommands = suggestions;
+    this.suggestions = suggestions;
     this.selectedIndex = 0;
 
     let html = '';
     suggestions.forEach((suggestion, index) => {
       const isSelected = index === 0 ? 'selected' : '';
+      const icon = this.getIconForCategory(suggestion.category);
+
       html += `
         <div class="slipstream-result-item ${isSelected}" data-index="${index}">
-          <div class="slipstream-result-icon">⚡</div>
+          <div class="slipstream-result-icon">${icon}</div>
           <div class="slipstream-result-content">
-            <div class="slipstream-result-title">${this.escapeHtml(suggestion.example)}</div>
-            <div class="slipstream-result-description">${this.escapeHtml(suggestion.command.description)}</div>
+            <div class="slipstream-result-title">${this.escapeHtml(suggestion.command)}</div>
+            <div class="slipstream-result-description">${this.escapeHtml(suggestion.description)}</div>
           </div>
-          <div class="slipstream-result-category">${this.escapeHtml(suggestion.command.category)}</div>
+          <div class="slipstream-result-category">${this.escapeHtml(suggestion.category)}</div>
         </div>
       `;
     });
@@ -332,15 +343,41 @@ class SpotlightUI {
     });
   }
 
+  getIconForCategory(category) {
+    const icons = {
+      'Setup': '⚙️',
+      'Object Manager': '📦',
+      'Fields': '🔤',
+      'Developer Tools': '👨‍💻',
+      'Common Objects': '⭐'
+    };
+    return icons[category] || '⚡';
+  }
+
   showNoResults(query) {
+    this.loadingState.style.display = 'none';
     this.emptyState.style.display = 'none';
     this.resultsContainer.style.display = 'block';
-    this.filteredCommands = [];
+    this.suggestions = [];
     this.resultsContainer.innerHTML = `
       <div class="slipstream-no-results">
         <div class="slipstream-no-results-icon">🔍</div>
         <div class="slipstream-no-results-title">No commands found</div>
         <div class="slipstream-no-results-query">Try: "open setup" or "open dev console"</div>
+      </div>
+    `;
+  }
+
+  showError() {
+    this.loadingState.style.display = 'none';
+    this.emptyState.style.display = 'none';
+    this.resultsContainer.style.display = 'block';
+    this.suggestions = [];
+    this.resultsContainer.innerHTML = `
+      <div class="slipstream-no-results">
+        <div class="slipstream-no-results-icon">❌</div>
+        <div class="slipstream-no-results-title">Error loading commands</div>
+        <div class="slipstream-no-results-query">Please try again or reload the page</div>
       </div>
     `;
   }
@@ -355,6 +392,9 @@ class SpotlightUI {
       this.backdrop.classList.add('slipstream-active');
       this.container.classList.add('slipstream-active');
       this.input.focus();
+
+      // Show empty state initially
+      this.showEmptyState();
     });
   }
 
@@ -374,7 +414,7 @@ class SpotlightUI {
 
       // Reset state
       this.input.value = '';
-      this.showEmptyState();
+      this.suggestions = [];
       this.selectedIndex = 0;
     }, 200);
   }

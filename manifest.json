@@ -1,12 +1,17 @@
 {
   "manifest_version": 3,
   "name": "Salesforce SlipStream",
-  "version": "0.2.0",
+  "version": "0.4.0",
+  "version_name": "0.4.0 - Direct Field & Layout Navigation",
   "description": "Accelerate Salesforce development with a Spotlight-style command palette",
   "permissions": [
     "activeTab",
-    "storage"
+    "storage",
+    "cookies"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "host_permissions": [
     "https://*.salesforce.com/*",
     "https://*.salesforce-sites.com/*",
@@ -30,7 +35,7 @@
         "https://*.cloudforce.com/*",
         "https://*.visualforce.com/*"
       ],
-      "js": ["command-parser.js", "url-builder.js", "content.js"],
+      "js": ["salesforce-api.js", "metadata-cache.js", "command-parser-dynamic.js", "url-builder.js", "content-dynamic.js"],
       "css": ["spotlight-ui.css"],
       "run_at": "document_idle"
     }

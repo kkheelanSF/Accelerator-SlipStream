@@ -22,6 +22,16 @@ class CommandParser {
         examples: ['open setup', 'open setup home']
       },
 
+      // Setup Quick Find
+      {
+        pattern: /^open\s+setup\s+quick\s+find\s+(.+)$/i,
+        description: 'Quick Find search in Setup',
+        category: 'Setup',
+        handler: 'openSetupQuickFind',
+        examples: ['open setup quick find Users', 'open setup quick find Profiles'],
+        paramNames: ['searchTerm']
+      },
+
       // Object Manager
       {
         pattern: /^open\s+object\s+manager$/i,
@@ -56,9 +66,9 @@ class CommandParser {
         pattern: /^open\s+setup\s+(\w+)\s+field\s+(\w+)$/i,
         description: 'Navigate to specific field details',
         category: 'Object Manager',
-        handler: 'openSetupObjectField',
+        handler: 'openSetupObjectFieldDirect',
         examples: ['open setup Account Field Industry', 'open setup Contact Field Email'],
-        paramNames: ['objectName', 'fieldName']
+        paramNames: ['objectName', 'fieldApiName']
       },
 
       // Open Setup Object Layout
@@ -66,48 +76,88 @@ class CommandParser {
         pattern: /^open\s+setup\s+(\w+)\s+layout\s+(.+)$/i,
         description: 'Navigate to specific page layout editor',
         category: 'Object Manager',
-        handler: 'openSetupObjectLayout',
+        handler: 'openSetupObjectLayoutDirect',
         examples: ['open setup Account Layout Standard', 'open setup Opportunity Layout Sales Layout'],
         paramNames: ['objectName', 'layoutName']
       },
 
-      // Open Setup Object Flexi Page
+      // Open Setup Object Layouts (home/list)
       {
-        pattern: /^open\s+setup\s+(\w+)\s+flexi\s+page\s+(.+)$/i,
+        pattern: /^open\s+setup\s+(\w+)\s+layouts$/i,
+        description: 'Navigate to layouts home',
+        category: 'Object Manager',
+        handler: 'openSetupObjectLayouts',
+        examples: ['open setup Account Layouts', 'open setup Contact Layouts'],
+        paramNames: ['objectName']
+      },
+
+      // Open Setup Object FlexiPages (home/list)
+      {
+        pattern: /^open\s+setup\s+(\w+)\s+flexipages$/i,
+        description: 'Navigate to lightning record pages home',
+        category: 'Object Manager',
+        handler: 'openSetupObjectFlexiPages',
+        examples: ['open setup Account FlexiPages', 'open setup Contact FlexiPages'],
+        paramNames: ['objectName']
+      },
+
+      // Open Setup Object FlexiPage (specific)
+      {
+        pattern: /^open\s+setup\s+(\w+)\s+flexipage\s+(.+)$/i,
         description: 'Navigate to Lightning page builder for specific page',
         category: 'Object Manager',
         handler: 'openSetupObjectFlexiPage',
-        examples: ['open setup Account Flexi Page Account_Record_Page'],
+        examples: ['open setup Account FlexiPage Account_Record_Page'],
         paramNames: ['objectName', 'flexiPageName']
       },
 
-      // Open Setup Object Validation Rules
+      // Open Setup Object ValidationRules
       {
-        pattern: /^open\s+setup\s+(\w+)\s+validation\s+rules$/i,
+        pattern: /^open\s+setup\s+(\w+)\s+validationrules$/i,
         description: 'Navigate to validation rules list for object',
         category: 'Object Manager',
         handler: 'openSetupObjectValidationRules',
-        examples: ['open setup Account Validation Rules', 'open setup Opportunity Validation Rules'],
+        examples: ['open setup Account ValidationRules', 'open setup Opportunity ValidationRules'],
         paramNames: ['objectName']
       },
 
-      // Open Setup Object Compact Layouts
+      // Open Setup Object Triggers
       {
-        pattern: /^open\s+setup\s+(\w+)\s+compact\s+layouts$/i,
+        pattern: /^open\s+setup\s+(\w+)\s+triggers$/i,
+        description: 'Navigate to triggers list for object',
+        category: 'Object Manager',
+        handler: 'openSetupObjectTriggers',
+        examples: ['open setup Account Triggers', 'open setup Opportunity Triggers'],
+        paramNames: ['objectName']
+      },
+
+      // Open Setup Object Buttons
+      {
+        pattern: /^open\s+setup\s+(\w+)\s+buttons$/i,
+        description: 'Navigate to buttons and links for object',
+        category: 'Object Manager',
+        handler: 'openSetupObjectButtons',
+        examples: ['open setup Account Buttons', 'open setup Contact Buttons'],
+        paramNames: ['objectName']
+      },
+
+      // Open Setup Object CompactLayouts
+      {
+        pattern: /^open\s+setup\s+(\w+)\s+compactlayouts$/i,
         description: 'Navigate to compact layouts for object',
         category: 'Object Manager',
         handler: 'openSetupObjectCompactLayouts',
-        examples: ['open setup Account Compact Layouts', 'open setup Contact Compact Layouts'],
+        examples: ['open setup Account CompactLayouts', 'open setup Contact CompactLayouts'],
         paramNames: ['objectName']
       },
 
-      // Open Setup Object Record Types
+      // Open Setup Object RecordTypes
       {
-        pattern: /^open\s+setup\s+(\w+)\s+record\s+types$/i,
+        pattern: /^open\s+setup\s+(\w+)\s+recordtypes$/i,
         description: 'Navigate to record types for object',
         category: 'Object Manager',
         handler: 'openSetupObjectRecordTypes',
-        examples: ['open setup Account Record Types', 'open setup Opportunity Record Types'],
+        examples: ['open setup Account RecordTypes', 'open setup Opportunity RecordTypes'],
         paramNames: ['objectName']
       },
 

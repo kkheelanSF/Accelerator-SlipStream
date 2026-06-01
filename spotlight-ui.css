@@ -207,6 +207,35 @@
   border: 0.5px solid rgba(0, 0, 0, 0.08);
 }
 
+/* Loading state */
+.slipstream-loading {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  text-align: center;
+  min-height: 200px;
+}
+
+.slipstream-loading-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  opacity: 0.6;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.95); }
+}
+
+.slipstream-loading-text {
+  font-size: 14px;
+  color: #86868b;
+  font-weight: 500;
+}
+
 /* Empty state */
 .slipstream-empty-state {
   display: flex;
@@ -237,6 +266,16 @@
   font-size: 14px;
   color: #86868b;
   line-height: 1.5;
+}
+
+.slipstream-empty-hint {
+  font-size: 13px;
+  color: #86868b;
+  margin-top: 16px;
+  padding: 8px 16px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  display: inline-block;
 }
 
 /* Coming soon state */
