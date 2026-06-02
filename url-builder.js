@@ -401,17 +401,53 @@ class URLBuilder {
   /**
    * User by Username or ID
    */
-  openUser(params) {
+  async openUser(params) {
     const { userIdentifier } = params;
-    const setupBaseUrl = this.getSetupBaseUrl();
 
-    // If it's a 15 or 18 character ID starting with 005, use direct ID navigation
+    // If it's a 15 or 18 character ID starting with 005, use direct record view
     if (userIdentifier.match(/^005[a-zA-Z0-9]{12,15}$/)) {
-      return `${setupBaseUrl}/lightning/setup/ManageUsers/${userIdentifier}/view`;
+      // Use base Lightning URL (not setup URL) for record view
+      return `${this.baseUrl}/lightning/r/User/${userIdentifier}/view`;
     }
 
-    // Otherwise, it's a username/email - navigate to users list with search
+    // Otherwise, it's a username/email - need to lookup user ID via API
+    // For now, use the page wrapper format with search fallback
+    const setupBaseUrl = this.getSetupBaseUrl();
+
+    // Try to find user by username/email using Salesforce API
+    try {
+      const userId = await this.lookupUserId(userIdentifier);
+      if (userId) {
+        // Use page wrapper format with encoded user detail URL
+        const userDetailPath = `/${userId}?noredirect=1&isUserEntityOverride=1`;
+        const encodedPath = encodeURIComponent(userDetailPath);
+        return `${setupBaseUrl}/lightning/setup/ManageUsers/page?address=${encodedPath}`;
+      }
+    } catch (error) {
+      console.warn('Failed to lookup user ID, falling back to search:', error);
+    }
+
+    // Fallback: navigate to users list with search
     return `${setupBaseUrl}/lightning/setup/ManageUsers/home?search=${encodeURIComponent(userIdentifier)}`;
+  }
+
+  /**
+   * Lookup user ID by username/email using Salesforce API
+   */
+  async lookupUserId(username) {
+    try {
+      // Use the global SalesforceAPI if available
+      if (typeof SalesforceAPI !== 'undefined') {
+        const query = `SELECT Id FROM User WHERE Username = '${username.replace(/'/g, "\\'")}' LIMIT 1`;
+        const result = await SalesforceAPI.query(query);
+        if (result && result.records && result.records.length > 0) {
+          return result.records[0].Id;
+        }
+      }
+    } catch (error) {
+      console.error('Error looking up user ID:', error);
+    }
+    return null;
   }
 
   /**

@@ -199,7 +199,7 @@ class DynamicCommandParser {
       }
       // open user {Username/ID}
       if (parts.length === 3 && secondKeyword === 'user') {
-        const userIdentifier = parts[2];
+        const userIdentifier = originalParts[2]; // Preserve case for user IDs
         suggestions.push({
           command: `open user ${userIdentifier}`,
           description: 'Navigate to specific user details page',
