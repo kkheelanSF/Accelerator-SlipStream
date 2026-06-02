@@ -352,7 +352,10 @@ class URLBuilder {
   openDebugLog(params) {
     const { logId } = params;
     const setupBaseUrl = this.getSetupBaseUrl();
-    return `${setupBaseUrl}/lightning/setup/ApexDebugLogs/${logId}/view`;
+    // Encode the classic URL path as the address parameter
+    const classicPath = `/p/setup/layout/ApexDebugLogDetailEdit/d?apex_log_id=${logId}`;
+    const encodedPath = encodeURIComponent(classicPath);
+    return `${setupBaseUrl}/lightning/setup/ApexDebugLogDetail/page?address=${encodedPath}`;
   }
 
   /**
