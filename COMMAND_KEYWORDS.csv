@@ -1,348 +1,348 @@
-Second Keyword,Full Command Example,Description/Achievement,To Implement?,Keyword,Implemented?,Redirect Link,Test Success?,Test Comment
-setup,open setup,Navigate to Setup home page,TRUE,open,TRUE,,Yes,
-setup home,open setup home,Navigate to Setup home page (alias),TRUE,open,TRUE,,Yes,
-setup quick find,open setup quick find [term],Quick Find search in Setup,TRUE,open,FALSE,,,
-object manager,open object manager,Navigate to Object Manager,TRUE,open,TRUE,,Yes,
-setup {Object},open setup Account,Navigate to specific object in Object Manager,TRUE,open,TRUE,,"Yes, Partial",
-setup {Object} Fields,open setup Account Fields,Navigate to Fields & Relationships for object,TRUE,open,TRUE,,"Yes, Partial",
-setup {Object} Field {Field},open setup Account Field Industry,Navigate to specific field details,TRUE,open,TRUE,,Needs Testing,
-setup {Object} Layouts,open setup Account Layouts,Navifate to layouts home,TRUE,"open ",TRUE,,,
-setup {Object} Layout {Layout},open setup Account Layout Standard,Navigate to specific page layout editor,TRUE,open,TRUE,,No,""
-setup {Object} FlexiPages,open setup Account FlexiPages,Navigate to lightning record pages home,TRUE,open,TRUE,"Yes, URL pattern updated to ObjectManager/{Object}/LightningPages/view",Needs Testing,Fixed - Now uses correct object-specific Lightning Pages URL
-setup {Object} FlexiPage {FlexiPage},open setup Account FlexiPage Account_Record_Page,Navigate to Lightning page builder for specific page,TRUE,open,TRUE,"Yes, Now uses API to lookup FlexiPage ID",Needs Testing,Fixed - Now looks up FlexiPage ID and navigates directly to page builder
-setup {Object} ValidationRules,open setup Account ValidationRules,Navigate to validation rules list for object,TRUE,open,TRUE,,Yes,
-setup {Object} Triggers,open setup Account Triggers,Navigate to triggers list for object,TRUE,open,FALSE,,,
-setup {Object} Buttons,open setup Account Buttons,Navigate to buttons and links for object,TRUE,open,FALSE,,,
-setup {Object} CompactLayouts,open setup Account CompactLayouts,Navigate to compact layouts for object,TRUE,open,TRUE,,,
-setup {Object} RecordTypes,open setup Account RecordTypes,Navigate to record types for object,TRUE,open,TRUE,,,
-dev console,open dev console,Open Salesforce Developer Console in new tab,TRUE,open,TRUE,,,
-developer console,open developer console,Open Salesforce Developer Console (alias),TRUE,open,TRUE,,,
-debug logs,open debug logs,Navigate to Debug Logs page,FALSE,open,FALSE,,,
-debug log {ID},open debug log 07LXXXXXXXXXXXX,Open specific debug log viewer,FALSE,open,FALSE,,,
-users,open users,Navigate to Users list in Setup,FALSE,open,FALSE,,,
-user {Username},open user john@example.com,Navigate to specific user details page,FALSE,open,FALSE,,,
-user {UserID},open user 005XXXXXXXXXXXX,Navigate to specific user details by ID,FALSE,open,FALSE,,,
-active users,open active users,Navigate to active users list,FALSE,open,FALSE,,,
-frozen users,open frozen users,Navigate to frozen users list,FALSE,open,FALSE,,,
-profiles,open profiles,Navigate to Profiles list in Setup,FALSE,open,FALSE,,,
-profile {Name},open profile System Administrator,Navigate to specific profile details,FALSE,open,FALSE,,,
-permission sets,open permission sets,Navigate to Permission Sets list,FALSE,open,FALSE,,,
-permission set {Name},open permission set API_Access,Navigate to specific permission set details,FALSE,open,FALSE,,,
-permission set groups,open permission set groups,Navigate to Permission Set Groups,FALSE,open,FALSE,,,
-permission set group {Name},open permission set group Developer_Group,Navigate to specific permission set group,FALSE,open,FALSE,,,
-apex classes,open apex classes,Navigate to Apex Classes list,FALSE,open,FALSE,,,
-apex class {Name},open apex class AccountController,Navigate to specific Apex class editor,FALSE,open,FALSE,,,
-apex triggers,open apex triggers,Navigate to Apex Triggers list,FALSE,open,FALSE,,,
-apex trigger {Name},open apex trigger AccountTrigger,Navigate to specific Apex trigger editor,FALSE,open,FALSE,,,
-apex test execution,open apex test execution,Navigate to Apex Test Execution page,FALSE,open,FALSE,,,
-apex jobs,open apex jobs,Navigate to Apex Jobs monitoring page,FALSE,open,FALSE,,,
-anonymous apex,open anonymous apex,Open anonymous Apex execution window,FALSE,open,FALSE,,,
-visualforce pages,open visualforce pages,Navigate to Visualforce Pages list,FALSE,open,FALSE,,,
-visualforce page {Name},open visualforce page AccountPage,Navigate to specific Visualforce page editor,FALSE,open,FALSE,,,
-visualforce components,open visualforce components,Navigate to Visualforce Components list,FALSE,open,FALSE,,,
-visualforce component {Name},open visualforce component CustomComponent,Navigate to specific component editor,FALSE,open,FALSE,,,
-lightning components,open lightning components,Navigate to Lightning Components list,FALSE,open,FALSE,,,
-lightning component {Name},open lightning component myComponent,Navigate to specific Lightning component,FALSE,open,FALSE,,,
-aura bundle {Name},open aura bundle accountDetails,Navigate to specific Aura bundle,FALSE,open,FALSE,,,
-lwc {Name},open lwc contactCard,Navigate to specific Lightning Web Component,FALSE,open,FALSE,,,
-system log,open system log,Navigate to System Overview logs,FALSE,open,FALSE,,,
-event log,open event log,Navigate to Event Monitoring logs,FALSE,open,FALSE,,,
-email logs,open email logs,Navigate to Email Log Files,FALSE,open,FALSE,,,
-scheduled jobs,open scheduled jobs,Navigate to Scheduled Jobs page,FALSE,open,FALSE,,,
-batch jobs,open batch jobs,Navigate to Batch Apex Jobs page,FALSE,open,FALSE,,,
-static resources,open static resources,Navigate to Static Resources list,FALSE,open,FALSE,,,
-static resource {Name},open static resource jQuery,Navigate to specific static resource,FALSE,open,FALSE,,,
-custom metadata types,open custom metadata types,Navigate to Custom Metadata Types list,FALSE,open,FALSE,,,
-custom metadata {Type},open custom metadata API_Settings__mdt,Navigate to specific custom metadata type,FALSE,open,FALSE,,,
-custom metadata records {Type},open custom metadata records API_Settings__mdt,Navigate to records for custom metadata type,FALSE,open,FALSE,,,
-custom settings,open custom settings,Navigate to Custom Settings list,FALSE,open,FALSE,,,
-custom setting {Name},open custom setting App_Config__c,Navigate to specific custom setting,FALSE,open,FALSE,,,
-user details {Username},open user details john@example.com,Navigate to detailed user information page,FALSE,open,FALSE,,,
-user permissions {Username},open user permissions john@example.com,View user's permission assignments,FALSE,open,FALSE,,,
-user login history {Username},open user login history john@example.com,View user's login history,FALSE,open,FALSE,,,
-user access,open user access,Navigate to User Access page,FALSE,open,FALSE,,,
-sharing settings,open sharing settings,Navigate to Sharing Settings page,FALSE,open,FALSE,,,
-org wide defaults,open org wide defaults,Navigate to Organization-Wide Defaults (OWD),FALSE,open,FALSE,,,
-owd,open owd,Navigate to Organization-Wide Defaults (alias),FALSE,open,FALSE,,,
-sharing rules,open sharing rules,Navigate to Sharing Rules list,FALSE,open,FALSE,,,
-sharing rule {Object} {Name},open sharing rule Account Sales_Team_Rule,Navigate to specific sharing rule,FALSE,open,FALSE,,,
-session settings,open session settings,Navigate to Session Settings,FALSE,open,FALSE,,,
-login access policies,open login access policies,Navigate to Login Access Policies,FALSE,open,FALSE,,,
-password policies,open password policies,Navigate to Password Policies,FALSE,open,FALSE,,,
-network access,open network access,Navigate to Network Access settings,FALSE,open,FALSE,,,
-trusted ip ranges,open trusted ip ranges,Navigate to Trusted IP Ranges,FALSE,open,FALSE,,,
-certificate management,open certificate management,Navigate to Certificate and Key Management,FALSE,open,FALSE,,,
-auth providers,open auth providers,Navigate to Auth Providers list,FALSE,open,FALSE,,,
-identity provider,open identity provider,Navigate to Identity Provider settings,FALSE,open,FALSE,,,
-saml settings,open saml settings,Navigate to SAML Single Sign-On Settings,FALSE,open,FALSE,,,
-single sign on,open single sign on,Navigate to Single Sign-On settings,FALSE,open,FALSE,,,
-profile editor {Name},open profile editor Standard User,Open profile editor for specific profile,FALSE,open,FALSE,,,
-permission set assignment {User},open permission set assignment john@example.com,View permission set assignments for user,FALSE,open,FALSE,,,
-public groups,open public groups,Navigate to Public Groups list,FALSE,open,FALSE,,,
-public group {Name},open public group Sales_Team,Navigate to specific public group,FALSE,open,FALSE,,,
-roles,open roles,Navigate to Roles list,FALSE,open,FALSE,,,
-role hierarchy,open role hierarchy,Navigate to Role Hierarchy viewer,FALSE,open,FALSE,,,
-delegated administration,open delegated administration,Navigate to Delegated Administration settings,FALSE,open,FALSE,,,
-field accessibility {Object},open field accessibility Account,View field accessibility for object,FALSE,open,FALSE,,,
-fls {Object},open fls Contact,View field-level security for object (alias),FALSE,open,FALSE,,,
-field permissions {Object} {Field},open field permissions Account Industry,View field permissions for specific field,FALSE,open,FALSE,,,
-platform encryption,open platform encryption,Navigate to Platform Encryption settings,FALSE,open,FALSE,,,
-shield platform encryption,open shield platform encryption,Navigate to Shield Platform Encryption,FALSE,open,FALSE,,,
-transaction security,open transaction security,Navigate to Transaction Security Policies,FALSE,open,FALSE,,,
-flows,open flows,Navigate to Flows list,FALSE,open,FALSE,,,
-flow {API Name},open flow Account_Creation,Navigate to specific flow in Flow Builder,FALSE,open,FALSE,,,
-flow builder,open flow builder,Open Flow Builder home,FALSE,open,FALSE,,,
-flow builder {API Name},open flow builder Lead_Conversion,Open Flow Builder with specific flow loaded,FALSE,open,FALSE,,,
-process builder,open process builder,Navigate to Process Builder home,FALSE,open,FALSE,,,
-process {Name},open process Account_Update_Process,Open specific process in Process Builder,FALSE,open,FALSE,,,
-workflow rules,open workflow rules,Navigate to Workflow Rules list,FALSE,open,FALSE,,,
-workflow rule {Object} {Name},open workflow rule Opportunity Close_Alert,Navigate to specific workflow rule,FALSE,open,FALSE,,,
-approval processes,open approval processes,Navigate to Approval Processes home,FALSE,open,FALSE,,,
-approval process {Object},open approval process Account,Navigate to approval processes for object,FALSE,open,FALSE,,,
-approval process {Object} {Name},open approval process Opportunity Discount_Approval,Navigate to specific approval process,FALSE,open,FALSE,,,
-email templates,open email templates,Navigate to Email Templates list,FALSE,open,FALSE,,,
-email template {Name},open email template Welcome_Email,Navigate to specific email template editor,FALSE,open,FALSE,,,
-email alerts,open email alerts,Navigate to Email Alerts list,FALSE,open,FALSE,,,
-workflow alerts,open workflow alerts,Navigate to Workflow Email Alerts,FALSE,open,FALSE,,,
-scheduled flows,open scheduled flows,Navigate to Scheduled Flows page,FALSE,open,FALSE,,,
-time based workflows,open time based workflows,Navigate to Time-Based Workflows monitoring,FALSE,open,FALSE,,,
-data loader,open data loader,Launch Data Loader or navigate to Data Import page,FALSE,open,FALSE,,,
-data import wizard,open data import wizard,Open Data Import Wizard,FALSE,open,FALSE,,,
-data export,open data export,Navigate to Data Export page,FALSE,open,FALSE,,,
-bulk data load jobs,open bulk data load jobs,Navigate to Bulk Data Load Jobs monitoring,FALSE,open,FALSE,,,
-import queue,open import queue,Navigate to Import Queue status,FALSE,open,FALSE,,,
-mass delete records,open mass delete records,Navigate to Mass Delete Records page,FALSE,open,FALSE,,,
-mass transfer records,open mass transfer records,Navigate to Mass Transfer Records page,FALSE,open,FALSE,,,
-mass update records,open mass update records,Navigate to Mass Update Records page,FALSE,open,FALSE,,,
-duplicate rules,open duplicate rules,Navigate to Duplicate Rules list,FALSE,open,FALSE,,,
-duplicate rule {Object},open duplicate rule Account,Navigate to duplicate rules for object,FALSE,open,FALSE,,,
-matching rules,open matching rules,Navigate to Matching Rules list,FALSE,open,FALSE,,,
-matching rule {Object},open matching rule Lead,Navigate to matching rules for object,FALSE,open,FALSE,,,
-storage usage,open storage usage,Navigate to Storage Usage page,FALSE,open,FALSE,,,
-data storage,open data storage,Navigate to Data Storage details,FALSE,open,FALSE,,,
-file storage,open file storage,Navigate to File Storage details,FALSE,open,FALSE,,,
-big objects,open big objects,Navigate to Big Objects list,FALSE,open,FALSE,,,
-app manager,open app manager,Navigate to App Manager,FALSE,open,FALSE,,,
-app builder,open app builder,Navigate to Lightning App Builder home,FALSE,open,FALSE,,,
-lightning app {Name},open lightning app Sales,Navigate to specific Lightning app settings,FALSE,open,FALSE,,,
-lightning page {Name},open lightning page Home_Page,Open Lightning page in App Builder,FALSE,open,FALSE,,,
-lightning pages,open lightning pages,Navigate to Lightning Pages list,FALSE,open,FALSE,,,
-utility bar,open utility bar,Navigate to Utility Bar configuration,FALSE,open,FALSE,,,
-home page layouts,open home page layouts,Navigate to Home Page Layouts,FALSE,open,FALSE,,,
-home page components,open home page components,Navigate to Home Page Components,FALSE,open,FALSE,,,
-dynamic forms {Object},open dynamic forms Account,Navigate to Dynamic Forms for object,FALSE,open,FALSE,,,
-global actions,open global actions,Navigate to Global Actions list,FALSE,open,FALSE,,,
-object actions {Object},open object actions Opportunity,Navigate to object-specific actions,FALSE,open,FALSE,,,
-api usage,open api usage,Navigate to API Usage page,FALSE,open,FALSE,,,
-api calls,open api calls,View API call monitoring,FALSE,open,FALSE,,,
-connected apps,open connected apps,Navigate to Connected Apps list,FALSE,open,FALSE,,,
-connected app {Name},open connected app Mobile_App,Navigate to specific connected app settings,FALSE,open,FALSE,,,
-rest api explorer,open rest api explorer,Open REST API Explorer (if available),FALSE,open,FALSE,,,
-soap api,open soap api,Navigate to SOAP API settings,FALSE,open,FALSE,,,
-external services,open external services,Navigate to External Services list,FALSE,open,FALSE,,,
-external service {Name},open external service Payment_Gateway,Navigate to specific external service,FALSE,open,FALSE,,,
-named credentials,open named credentials,Navigate to Named Credentials list,FALSE,open,FALSE,,,
-named credential {Name},open named credential AWS_Connection,Navigate to specific named credential,FALSE,open,FALSE,,,
-remote site settings,open remote site settings,Navigate to Remote Site Settings,FALSE,open,FALSE,,,
-remote site {Name},open remote site GitHub_API,Navigate to specific remote site setting,FALSE,open,FALSE,,,
-platform events,open platform events,Navigate to Platform Events list,FALSE,open,FALSE,,,
-platform event {Name},open platform event Order_Event__e,Navigate to specific platform event,FALSE,open,FALSE,,,
-change data capture,open change data capture,Navigate to Change Data Capture settings,FALSE,open,FALSE,,,
-cdc settings,open cdc settings,Navigate to CDC settings (alias),FALSE,open,FALSE,,,
-outbound messages,open outbound messages,Navigate to Outbound Messages list,FALSE,open,FALSE,,,
-outbound message {Name},open outbound message Case_Notification,Navigate to specific outbound message,FALSE,open,FALSE,,,
-reports,open reports,Navigate to Reports home,FALSE,open,FALSE,,,
-report {Name},open report Sales_Pipeline,Open specific report,FALSE,open,FALSE,,,
-report builder,open report builder,Open new report builder,FALSE,open,FALSE,,,
-dashboards,open dashboards,Navigate to Dashboards home,FALSE,open,FALSE,,,
-dashboard {Name},open dashboard Executive_Dashboard,Open specific dashboard,FALSE,open,FALSE,,,
-dashboard builder,open dashboard builder,Open new dashboard builder,FALSE,open,FALSE,,,
-report types,open report types,Navigate to Report Types list,FALSE,open,FALSE,,,
-report type {Name},open report type Accounts_and_Contacts,Navigate to specific report type,FALSE,open,FALSE,,,
-einstein analytics,open einstein analytics,Navigate to Einstein Analytics (CRM Analytics),FALSE,open,FALSE,,,
-analytics studio,open analytics studio,Open Analytics Studio,FALSE,open,FALSE,,,
-crm analytics,open crm analytics,Navigate to CRM Analytics home,FALSE,open,FALSE,,,
-apps,open apps,Navigate to Apps list,FALSE,open,FALSE,,,
-canvas apps,open canvas apps,Navigate to Canvas Apps,FALSE,open,FALSE,,,
-tabs,open tabs,Navigate to Tabs list in Setup,FALSE,open,FALSE,,,
-tab {Name},open tab Accounts,Navigate to specific tab settings,FALSE,open,FALSE,,,
-navigation menu,open navigation menu,Navigate to Navigation Menus configuration,FALSE,open,FALSE,,,
-app navigation {Name},open app navigation Sales,Configure navigation for specific app,FALSE,open,FALSE,,,
-company information,open company information,Navigate to Company Information page,FALSE,open,FALSE,,,
-org details,open org details,Navigate to Organization details,FALSE,open,FALSE,,,
-org limits,open org limits,Navigate to System Overview (org limits),FALSE,open,FALSE,,,
-system overview,open system overview,Navigate to System Overview page,FALSE,open,FALSE,,,
-deployment status,open deployment status,Navigate to Deployment Status page,FALSE,open,FALSE,,,
-deploy,open deploy,Navigate to Deploy page,FALSE,open,FALSE,,,
-change sets,open change sets,Navigate to Change Sets home,FALSE,open,FALSE,,,
-inbound change sets,open inbound change sets,Navigate to Inbound Change Sets,FALSE,open,FALSE,,,
-outbound change sets,open outbound change sets,Navigate to Outbound Change Sets,FALSE,open,FALSE,,,
-change set {Name},open change set Feature_Release_v1,Navigate to specific change set,FALSE,open,FALSE,,,
-installed packages,open installed packages,Navigate to Installed Packages list,FALSE,open,FALSE,,,
-package manager,open package manager,Navigate to Package Manager,FALSE,open,FALSE,,,
-managed packages,open managed packages,Navigate to Managed Packages list,FALSE,open,FALSE,,,
-sandboxes,open sandboxes,Navigate to Sandboxes page,FALSE,open,FALSE,,,
-sandbox {Name},open sandbox UAT_Sandbox,Navigate to specific sandbox details,FALSE,open,FALSE,,,
-release updates,open release updates,Navigate to Release Updates,FALSE,open,FALSE,,,
-critical updates,open critical updates,Navigate to Critical Updates,FALSE,open,FALSE,,,
-record {Object} {ID},open record Account 001XXXXXXXXXXXX,Navigate to specific record detail page,FALSE,open,FALSE,,,
-list view {Object},open list view Account,Navigate to default list view for object,FALSE,open,FALSE,,,
-list view {Object} {View},open list view Opportunity My_Open_Opps,Navigate to specific list view,FALSE,open,FALSE,,,
-recent {Object},open recent Contact,Navigate to recently viewed records for object,FALSE,open,FALSE,,,
-recently viewed,open recently viewed,Navigate to Recently Viewed items,FALSE,open,FALSE,,,
-metadata types,open metadata types,Navigate to Metadata Types (if available),FALSE,open,FALSE,,,
-metadata coverage,open metadata coverage,View Metadata API coverage,FALSE,open,FALSE,,,
-metadata api,open metadata api,Navigate to Metadata API information,FALSE,open,FALSE,,,
-tooling api,open tooling api,Navigate to Tooling API explorer,FALSE,open,FALSE,,,
-trace flags,open trace flags,Navigate to Debug Trace Flags,FALSE,open,FALSE,,,
-checkpoint locations,open checkpoint locations,Navigate to Checkpoint Locations,FALSE,open,FALSE,,,
-schema builder,open schema builder,Open Schema Builder,FALSE,open,FALSE,,,
-lightning sync,open lightning sync,Navigate to Lightning Sync settings,FALSE,open,FALSE,,,
-einstein activity capture,open einstein activity capture,Navigate to Einstein Activity Capture,FALSE,open,FALSE,,,
-event monitoring,open event monitoring,Navigate to Event Monitoring,FALSE,open,FALSE,,,
-event log files,open event log files,Navigate to Event Log Files,FALSE,open,FALSE,,,
-transaction security policies,open transaction security policies,Navigate to Transaction Security Policies,FALSE,open,FALSE,,,
-devops center,open devops center,Navigate to DevOps Center,FALSE,open,FALSE,,,
-pipelines,open pipelines,Navigate to Deployment Pipelines,FALSE,open,FALSE,,,
-work items,open work items,Navigate to Work Items in DevOps Center,FALSE,open,FALSE,,,
-object details {Object},open object details Account,Navigate to object details page,FALSE,open,FALSE,,,
-object limits,open object limits,View org object limits,FALSE,open,FALSE,,,
-object relationships {Object},open object relationships Contact,View object relationships diagram,FALSE,open,FALSE,,,
-fields {Object},open fields Account,Navigate to fields list for object,FALSE,open,FALSE,,,
-field editor {Object},open field editor Opportunity,Open field editor for object,FALSE,open,FALSE,,,
-field dependencies {Object},open field dependencies Case,View field dependencies for object,FALSE,open,FALSE,,,
-field history {Object} {Field},open field history Account Name,View field history tracking settings,FALSE,open,FALSE,,,
-page layouts {Object},open page layouts Lead,Navigate to page layouts list for object,FALSE,open,FALSE,,,
-page layout {Object} {Layout},open page layout Contact Standard,Navigate to specific page layout,FALSE,open,FALSE,,,
-page layout assignment {Object},open page layout assignment Account,View page layout assignments for object,FALSE,open,FALSE,,,
-record types {Object},open record types Opportunity,Navigate to record types for object,FALSE,open,FALSE,,,
-record type {Object} {Name},open record type Case Customer_Support,Navigate to specific record type,FALSE,open,FALSE,,,
-record type assignment {Object},open record type assignment Lead,View record type assignments,FALSE,open,FALSE,,,
-validation rules {Object},open validation rules Account,Navigate to validation rules for object,FALSE,open,FALSE,,,
-validation rule {Object} {Name},open validation rule Opportunity Discount_Check,Navigate to specific validation rule,FALSE,open,FALSE,,,
-compact layouts {Object},open compact layouts Contact,Navigate to compact layouts for object,FALSE,open,FALSE,,,
-compact layout {Object} {Name},open compact layout Account Primary,Navigate to specific compact layout,FALSE,open,FALSE,,,
-buttons {Object},open buttons Case,Navigate to buttons and links for object,FALSE,open,FALSE,,,
-button {Object} {Name},open button Account New_with_Address,Navigate to specific button details,FALSE,open,FALSE,,,
-action {Object} {Name},open action Opportunity Quick_Update,Navigate to specific action details,FALSE,open,FALSE,,,
-user,create user,Launch quick user creation wizard,FALSE,create,FALSE,,,
-account,create account,Launch quick account creation form,FALSE,create,FALSE,,,
-contact,create contact,Launch quick contact creation form,FALSE,create,FALSE,,,
-opportunity,create opportunity,Launch quick opportunity creation form,FALSE,create,FALSE,,,
-case,create case,Launch quick case creation form,FALSE,create,FALSE,,,
-lead,create lead,Launch quick lead creation form,FALSE,create,FALSE,,,
-campaign,create campaign,Launch quick campaign creation form,FALSE,create,FALSE,,,
-sandbox,create sandbox,Launch sandbox creation wizard,FALSE,create,FALSE,,,
-field {Object},create field Account,Launch field creation wizard for object,FALSE,create,FALSE,,,
-object,create object,Launch custom object creation wizard,FALSE,create,FALSE,,,
-validation {Object},create validation Account,Launch validation rule creation for object,FALSE,create,FALSE,,,
-flow,create flow,Launch Flow Builder with new flow,FALSE,create,FALSE,,,
-apex class,create apex class,Create new Apex class template,FALSE,create,FALSE,,,
-trigger {Object},create trigger Account,Create new Apex trigger for object,FALSE,create,FALSE,,,
-permission set,create permission set,Launch permission set creation wizard,FALSE,create,FALSE,,,
-profile,create profile,Launch profile creation wizard (clone),FALSE,create,FALSE,,,
-public group,create public group,Launch public group creation,FALSE,create,FALSE,,,
-role,create role,Launch role creation in role hierarchy,FALSE,create,FALSE,,,
-email template,create email template,Launch email template creation wizard,FALSE,create,FALSE,,,
-report,create report,Launch report builder for new report,FALSE,create,FALSE,,,
-dashboard,create dashboard,Launch dashboard builder for new dashboard,FALSE,create,FALSE,,,
-list view {Object},create list view Account,Create new list view for object,FALSE,create,FALSE,,,
-page layout {Object},create page layout Contact,Create new page layout for object,FALSE,create,FALSE,,,
-record type {Object},create record type Opportunity,Create new record type for object,FALSE,create,FALSE,,,
-lightning page,create lightning page,Launch Lightning App Builder for new page,FALSE,create,FALSE,,,
-lightning app,create lightning app,Launch Lightning App creation wizard,FALSE,create,FALSE,,,
-visualforce page,create visualforce page,Create new Visualforce page,FALSE,create,FALSE,,,
-lightning component,create lightning component,Create new Lightning component,FALSE,create,FALSE,,,
-static resource,create static resource,Upload new static resource,FALSE,create,FALSE,,,
-custom metadata type,create custom metadata type,Create new custom metadata type,FALSE,create,FALSE,,,
-custom setting,create custom setting,Create new custom setting,FALSE,create,FALSE,,,
-remote site,create remote site,Add new remote site setting,FALSE,create,FALSE,,,
-named credential,create named credential,Create new named credential,FALSE,create,FALSE,,,
-connected app,create connected app,Create new connected app,FALSE,create,FALSE,,,
-platform event,create platform event,Create new platform event,FALSE,create,FALSE,,,
-approval process {Object},create approval process Account,Launch approval process wizard for object,FALSE,create,FALSE,,,
-workflow rule {Object},create workflow rule Case,Create new workflow rule for object,FALSE,create,FALSE,,,
-sharing rule {Object},create sharing rule Lead,Create new sharing rule for object,FALSE,create,FALSE,,,
-duplicate rule {Object},create duplicate rule Contact,Create new duplicate rule for object,FALSE,create,FALSE,,,
-matching rule {Object},create matching rule Lead,Create new matching rule for object,FALSE,create,FALSE,,,
-change set,create change set,Create new outbound change set,FALSE,create,FALSE,,,
-user {Query},search user john,Search for users by name or email,FALSE,search,FALSE,,,
-record {Object} {Query},search record Account Acme,Search records in specific object,FALSE,search,FALSE,,,
-field {Query},search field email,Search for fields across all objects,FALSE,search,FALSE,,,
-apex {Query},search apex AccountController,Search Apex classes and triggers,FALSE,search,FALSE,,,
-flow {Query},search flow account,Search flows by name,FALSE,search,FALSE,,,
-report {Query},search report sales,Search reports by name,FALSE,search,FALSE,,,
-dashboard {Query},search dashboard executive,Search dashboards by name,FALSE,search,FALSE,,,
-metadata {Query},search metadata validation,Search metadata components,FALSE,search,FALSE,,,
-global {Query},search global acme,Global search across Salesforce,FALSE,search,FALSE,,,
-user {Username},edit user john@example.com,Open user edit page,FALSE,edit,FALSE,,,
-record {Object} {ID},edit record Account 001XXXXXXXXXXXX,Open record edit page,FALSE,edit,FALSE,,,
-field {Object}.{Field},edit field Account.Industry,Edit field metadata,FALSE,edit,FALSE,,,
-object {Object},edit object CustomObject__c,Edit object metadata,FALSE,edit,FALSE,,,
-profile {Name},edit profile System Administrator,Edit profile settings,FALSE,edit,FALSE,,,
-permission set {Name},edit permission set API_Access,Edit permission set,FALSE,edit,FALSE,,,
-flow {Name},edit flow Account_Creation,Open flow in edit mode,FALSE,edit,FALSE,,,
-validation rule {Object} {Name},edit validation rule Account Min_Revenue,Edit validation rule,FALSE,edit,FALSE,,,
-workflow rule {Object} {Name},edit workflow rule Case Auto_Assign,Edit workflow rule,FALSE,edit,FALSE,,,
-page layout {Object} {Layout},edit page layout Contact Standard,Edit page layout,FALSE,edit,FALSE,,,
-field {Object}.{Field},delete field Account.OldField__c,Delete field with safety checks,FALSE,delete,FALSE,,,
-record {Object} {ID},delete record Account 001XXXXXXXXXXXX,Delete specific record,FALSE,delete,FALSE,,,
-user {Username},delete user test@example.com,Deactivate user (safety check),FALSE,delete,FALSE,,,
-validation rule {Object} {Name},delete validation rule Account Test_Rule,Delete validation rule,FALSE,delete,FALSE,,,
-flow {Name},delete flow Old_Process_Flow,Delete flow (with dependency check),FALSE,delete,FALSE,,,
-apex class {Name},delete apex class OldController,Delete Apex class (with dependency check),FALSE,delete,FALSE,,,
-user {Username},clone user john@example.com,Clone user and permissions to new user,FALSE,clone,FALSE,,,
-profile {Name},clone profile Standard User,Clone profile to create new one,FALSE,clone,FALSE,,,
-permission set {Name},clone permission set Developer_Access,Clone permission set,FALSE,clone,FALSE,,,
-record {Object} {ID},clone record Opportunity 006XXXXXXXXXXXX,Clone record with prepopulated fields,FALSE,clone,FALSE,,,
-page layout {Object} {Layout},clone page layout Account Standard,Clone page layout,FALSE,clone,FALSE,,,
-flow {Name},clone flow Lead_Conversion,Clone existing flow,FALSE,clone,FALSE,,,
-permissions {Username},analyze permissions john@example.com,Analyze user's effective permissions,FALSE,analyze,FALSE,,,
-limits,analyze limits,Show org limits usage and capacity,FALSE,analyze,FALSE,,,
-dependencies {Object/Field},analyze dependencies Account.CustomField__c,Show where field/object is used,FALSE,analyze,FALSE,,,
-api usage,analyze api usage,Show API usage statistics,FALSE,analyze,FALSE,,,
-storage,analyze storage,Show data and file storage usage,FALSE,analyze,FALSE,,,
-security,analyze security,Run security health check,FALSE,analyze,FALSE,,,
-performance {Object},analyze performance Account,Show performance metrics for object,FALSE,analyze,FALSE,,,
-apex {Code},run apex System.debug('test'),Execute anonymous Apex code,FALSE,run,FALSE,,,
-soql {Query},run soql SELECT Id FROM Account,Execute SOQL query,FALSE,run,FALSE,,,
-flow {Name},run flow Test_Flow,Execute flow for testing,FALSE,run,FALSE,,,
-test {Class},run test AccountControllerTest,Run specific Apex test class,FALSE,run,FALSE,,,
-all tests,run all tests,Run all Apex tests in org,FALSE,run,FALSE,,,
-data {Object},export data Account,Export data from object to CSV,FALSE,export,FALSE,,,
-metadata {Type},export metadata ApexClass,Export metadata of specific type,FALSE,export,FALSE,,,
-report {Name},export report Sales_Pipeline,Export report data,FALSE,export,FALSE,,,
-users,export users,Export user list with details,FALSE,export,FALSE,,,
-sandboxes,compare sandboxes,Compare metadata between sandboxes,FALSE,compare,FALSE,,,
-fields {Object},compare fields Account,Compare fields across orgs,FALSE,compare,FALSE,,,
-profiles {Name1} {Name2},compare profiles Admin vs User,Compare two profiles side by side,FALSE,compare,FALSE,,,
-data {Object},import data Account,Import data into object from CSV,FALSE,import,FALSE,,,
-metadata,import metadata,Import metadata from package,FALSE,import,FALSE,,,
-permission set {Name} {User},assign permission set API_Access john@example.com,Assign permission set to user,FALSE,assign,FALSE,,,
-profile {Name} {User},assign profile Developer john@example.com,Assign profile to user,FALSE,assign,FALSE,,,
-change set {Name},deploy change set Feature_v1,Deploy inbound change set,FALSE,deploy,FALSE,,,
-metadata,deploy metadata,Deploy metadata from package,FALSE,deploy,FALSE,,,
-sandbox {Name},refresh sandbox UAT,Refresh specific sandbox,FALSE,refresh,FALSE,,,
-flow {Name},activate flow Account_Process,Activate a flow,FALSE,activate,FALSE,,,
-flow {Name},deactivate flow Old_Process,Deactivate a flow,FALSE,deactivate,FALSE,,,
-validation rule {Object} {Name},activate validation rule Account Revenue_Check,Activate validation rule,FALSE,activate,FALSE,,,
-validation rule {Object} {Name},deactivate validation rule Account Test_Rule,Deactivate validation rule,FALSE,deactivate,FALSE,,,
-user {Username},freeze user contractor@example.com,Freeze user account,FALSE,freeze,FALSE,,,
-user {Username},unfreeze user contractor@example.com,Unfreeze user account,FALSE,unfreeze,FALSE,,,
-password {Username},reset password john@example.com,Reset user password and send email,FALSE,reset,FALSE,,,
-login access {Username},grant login access john@example.com,Grant login access to user,FALSE,grant,FALSE,,,
-apex {Class/Trigger},debug apex AccountTrigger,Set up debug logging for Apex,FALSE,debug,FALSE,,,
-flow {Name},debug flow Account_Creation,Enable debug mode for flow,FALSE,debug,FALSE,,,
-api,monitor api,Open API usage monitoring dashboard,FALSE,monitor,FALSE,,,
-jobs,monitor jobs,Open Apex jobs monitoring,FALSE,monitor,FALSE,,,
-limits,monitor limits,Monitor org limits in real-time,FALSE,monitor,FALSE,,,
-dependencies {Component},view dependencies CustomField__c,View component dependencies,FALSE,view,FALSE,,,
-usage {Component},view usage AccountTrigger,View where component is used,FALSE,view,FALSE,,,
-history {Object} {ID},view history Account 001XXXXXXXXXXXX,View record field history,FALSE,view,FALSE,,,
-setup audit trail,view setup audit trail,View setup audit trail,FALSE,view,FALSE,,,
-metadata,backup metadata,Export all metadata for backup,FALSE,backup,FALSE,,,
-metadata {Backup},restore metadata 2024-05-01,Restore metadata from backup,FALSE,restore,FALSE,,,
-apex {Class},schedule apex BatchProcess,Schedule Apex class execution,FALSE,schedule,FALSE,,,
-flow {Name},schedule flow Daily_Update,Schedule flow execution,FALSE,schedule,FALSE,,,
-log {ID},download log 07LXXXXXXXXXXXX,Download debug log file,FALSE,download,FALSE,,,
-debug logs,clear debug logs,Clear all debug logs,FALSE,clear,FALSE,,,
+Keyword,Second Keyword,Full Command Example,Description/Achievement,To Implement?,Implemented?,Redirect Link,Test Success?,Test Comment
+open,setup,open setup,Navigate to Setup home page,TRUE,TRUE,,Yes
+open,setup home,open setup home,Navigate to Setup home page (alias),TRUE,TRUE,,Yes
+open,setup quick find,open setup quick find [term],Quick Find search in Setup,TRUE,TRUE
+open,object manager,open object manager,Navigate to Object Manager,TRUE,TRUE,,Yes
+open,setup {Object},open setup Account,Navigate to specific object in Object Manager,TRUE,TRUE,,Yes
+open,setup {Object} Fields,open setup Account Fields,Navigate to Fields & Relationships for object,TRUE,TRUE,,Yes
+open,setup {Object} Field {Field},open setup Account Field Industry,Navigate to specific field details,TRUE,TRUE,,Yes
+"open ",setup {Object} Layouts,open setup Account Layouts,Navifate to layouts home,TRUE,TRUE,,Yes
+open,setup {Object} Layout {Layout},open setup Account Layout Standard,Navigate to specific page layout editor,TRUE,TRUE,,Yes
+open,setup {Object} FlexiPages,open setup Account FlexiPages,Navigate to lightning record pages home,TRUE,TRUE,,Yes
+open,setup {Object} FlexiPage {FlexiPage},open setup Account FlexiPage Account_Record_Page,Navigate to Lightning page builder for specific page,TRUE,TRUE,"Yes, Now uses API to lookup FlexiPage ID",Yes,Fixed - Now looks up FlexiPage ID and navigates directly to page builder
+open,setup {Object} ValidationRules,open setup Account ValidationRules,Navigate to validation rules list for object,TRUE,TRUE,,Yes
+open,setup {Object} Triggers,open setup Account Triggers,Navigate to triggers list for object,TRUE,TRUE,,Yes
+open,setup {Object} Buttons,open setup Account Buttons,Navigate to buttons and links for object,TRUE,TRUE,,Yes
+open,setup {Object} CompactLayouts,open setup Account CompactLayouts,Navigate to compact layouts for object,TRUE,TRUE,,Yes
+open,setup {Object} RecordTypes,open setup Account RecordTypes,Navigate to record types for object,TRUE,TRUE,,Yes
+open,dev console,open dev console,Open Salesforce Developer Console in new tab,TRUE,TRUE,https://{}.sandbox.my.salesforce.com/_ui/common/apex/debug/ApexCSIPage,Yes,Fixed sandbox URL handling
+open,developer console,open developer console,Open Salesforce Developer Console (alias),TRUE,TRUE,https://{}.sandbox.my.salesforce.com/_ui/common/apex/debug/ApexCSIPage,Yes,Uses same handler as dev console
+open,debug logs,open debug logs,Navigate to Debug Logs page,TRUE,TRUE
+open,debug log {ID},open debug log 07LXXXXXXXXXXXX,Open specific debug log viewer,TRUE,TRUE
+open,users,open users,Navigate to Users list in Setup,TRUE,TRUE
+open,user {Username},open user john@example.com,Navigate to specific user details page,TRUE,TRUE
+open,user {UserID},open user 005XXXXXXXXXXXX,Navigate to specific user details by ID,TRUE,TRUE
+open,active users,open active users,Navigate to active users list,TRUE,TRUE
+open,frozen users,open frozen users,Navigate to frozen users list,TRUE,TRUE
+open,profiles,open profiles,Navigate to Profiles list in Setup,TRUE,TRUE
+open,profile {Name},open profile System Administrator,Navigate to specific profile details,TRUE,TRUE
+open,permission sets,open permission sets,Navigate to Permission Sets list,TRUE,TRUE
+open,permission set {Name},open permission set API_Access,Navigate to specific permission set details,TRUE,TRUE
+open,permission set groups,open permission set groups,Navigate to Permission Set Groups,TRUE,TRUE
+open,permission set group {Name},open permission set group Developer_Group,Navigate to specific permission set group,TRUE,TRUE
+open,apex classes,open apex classes,Navigate to Apex Classes list,TRUE,TRUE
+open,apex class {Name},open apex class AccountController,Navigate to specific Apex class editor,TRUE,TRUE
+open,apex triggers,open apex triggers,Navigate to Apex Triggers list,TRUE,TRUE
+open,apex trigger {Name},open apex trigger AccountTrigger,Navigate to specific Apex trigger editor,TRUE,TRUE
+open,apex test execution,open apex test execution,Navigate to Apex Test Execution page,TRUE,TRUE
+open,apex jobs,open apex jobs,Navigate to Apex Jobs monitoring page,TRUE,TRUE
+open,anonymous apex,open anonymous apex,Open anonymous Apex execution window,TRUE,TRUE
+open,visualforce pages,open visualforce pages,Navigate to Visualforce Pages list,TRUE,TRUE
+open,visualforce page {Name},open visualforce page AccountPage,Navigate to specific Visualforce page editor,TRUE,TRUE
+open,visualforce components,open visualforce components,Navigate to Visualforce Components list,TRUE,TRUE
+open,visualforce component {Name},open visualforce component CustomComponent,Navigate to specific component editor,TRUE,TRUE
+open,lightning components,open lightning components,Navigate to Lightning Components list,TRUE,TRUE
+open,lightning component {Name},open lightning component myComponent,Navigate to specific Lightning component,TRUE,TRUE
+open,aura bundle {Name},open aura bundle accountDetails,Navigate to specific Aura bundle,TRUE,TRUE
+open,lwc {Name},open lwc contactCard,Navigate to specific Lightning Web Component,TRUE,TRUE
+open,system log,open system log,Navigate to System Overview logs,TRUE,TRUE
+open,event log,open event log,Navigate to Event Monitoring logs,TRUE,TRUE
+open,email logs,open email logs,Navigate to Email Log Files,TRUE,TRUE
+open,scheduled jobs,open scheduled jobs,Navigate to Scheduled Jobs page,TRUE,TRUE
+open,batch jobs,open batch jobs,Navigate to Batch Apex Jobs page,FALSE,FALSE
+open,static resources,open static resources,Navigate to Static Resources list,FALSE,FALSE
+open,static resource {Name},open static resource jQuery,Navigate to specific static resource,FALSE,FALSE
+open,custom metadata types,open custom metadata types,Navigate to Custom Metadata Types list,FALSE,FALSE
+open,custom metadata {Type},open custom metadata API_Settings__mdt,Navigate to specific custom metadata type,FALSE,FALSE
+open,custom metadata records {Type},open custom metadata records API_Settings__mdt,Navigate to records for custom metadata type,FALSE,FALSE
+open,custom settings,open custom settings,Navigate to Custom Settings list,FALSE,FALSE
+open,custom setting {Name},open custom setting App_Config__c,Navigate to specific custom setting,FALSE,FALSE
+open,user details {Username},open user details john@example.com,Navigate to detailed user information page,FALSE,FALSE
+open,user permissions {Username},open user permissions john@example.com,View user's permission assignments,FALSE,FALSE
+open,user login history {Username},open user login history john@example.com,View user's login history,FALSE,FALSE
+open,user access,open user access,Navigate to User Access page,FALSE,FALSE
+open,sharing settings,open sharing settings,Navigate to Sharing Settings page,FALSE,FALSE
+open,org wide defaults,open org wide defaults,Navigate to Organization-Wide Defaults (OWD),FALSE,FALSE
+open,owd,open owd,Navigate to Organization-Wide Defaults (alias),FALSE,FALSE
+open,sharing rules,open sharing rules,Navigate to Sharing Rules list,FALSE,FALSE
+open,sharing rule {Object} {Name},open sharing rule Account Sales_Team_Rule,Navigate to specific sharing rule,FALSE,FALSE
+open,session settings,open session settings,Navigate to Session Settings,FALSE,FALSE
+open,login access policies,open login access policies,Navigate to Login Access Policies,FALSE,FALSE
+open,password policies,open password policies,Navigate to Password Policies,FALSE,FALSE
+open,network access,open network access,Navigate to Network Access settings,FALSE,FALSE
+open,trusted ip ranges,open trusted ip ranges,Navigate to Trusted IP Ranges,FALSE,FALSE
+open,certificate management,open certificate management,Navigate to Certificate and Key Management,FALSE,FALSE
+open,auth providers,open auth providers,Navigate to Auth Providers list,FALSE,FALSE
+open,identity provider,open identity provider,Navigate to Identity Provider settings,FALSE,FALSE
+open,saml settings,open saml settings,Navigate to SAML Single Sign-On Settings,FALSE,FALSE
+open,single sign on,open single sign on,Navigate to Single Sign-On settings,FALSE,FALSE
+open,profile editor {Name},open profile editor Standard User,Open profile editor for specific profile,FALSE,FALSE
+open,permission set assignment {User},open permission set assignment john@example.com,View permission set assignments for user,FALSE,FALSE
+open,public groups,open public groups,Navigate to Public Groups list,FALSE,FALSE
+open,public group {Name},open public group Sales_Team,Navigate to specific public group,FALSE,FALSE
+open,roles,open roles,Navigate to Roles list,FALSE,FALSE
+open,role hierarchy,open role hierarchy,Navigate to Role Hierarchy viewer,FALSE,FALSE
+open,delegated administration,open delegated administration,Navigate to Delegated Administration settings,FALSE,FALSE
+open,field accessibility {Object},open field accessibility Account,View field accessibility for object,FALSE,FALSE
+open,fls {Object},open fls Contact,View field-level security for object (alias),FALSE,FALSE
+open,field permissions {Object} {Field},open field permissions Account Industry,View field permissions for specific field,FALSE,FALSE
+open,platform encryption,open platform encryption,Navigate to Platform Encryption settings,FALSE,FALSE
+open,shield platform encryption,open shield platform encryption,Navigate to Shield Platform Encryption,FALSE,FALSE
+open,transaction security,open transaction security,Navigate to Transaction Security Policies,FALSE,FALSE
+open,flows,open flows,Navigate to Flows list,FALSE,FALSE
+open,flow {API Name},open flow Account_Creation,Navigate to specific flow in Flow Builder,FALSE,FALSE
+open,flow builder,open flow builder,Open Flow Builder home,FALSE,FALSE
+open,flow builder {API Name},open flow builder Lead_Conversion,Open Flow Builder with specific flow loaded,FALSE,FALSE
+open,process builder,open process builder,Navigate to Process Builder home,FALSE,FALSE
+open,process {Name},open process Account_Update_Process,Open specific process in Process Builder,FALSE,FALSE
+open,workflow rules,open workflow rules,Navigate to Workflow Rules list,FALSE,FALSE
+open,workflow rule {Object} {Name},open workflow rule Opportunity Close_Alert,Navigate to specific workflow rule,FALSE,FALSE
+open,approval processes,open approval processes,Navigate to Approval Processes home,FALSE,FALSE
+open,approval process {Object},open approval process Account,Navigate to approval processes for object,FALSE,FALSE
+open,approval process {Object} {Name},open approval process Opportunity Discount_Approval,Navigate to specific approval process,FALSE,FALSE
+open,email templates,open email templates,Navigate to Email Templates list,FALSE,FALSE
+open,email template {Name},open email template Welcome_Email,Navigate to specific email template editor,FALSE,FALSE
+open,email alerts,open email alerts,Navigate to Email Alerts list,FALSE,FALSE
+open,workflow alerts,open workflow alerts,Navigate to Workflow Email Alerts,FALSE,FALSE
+open,scheduled flows,open scheduled flows,Navigate to Scheduled Flows page,FALSE,FALSE
+open,time based workflows,open time based workflows,Navigate to Time-Based Workflows monitoring,FALSE,FALSE
+open,data loader,open data loader,Launch Data Loader or navigate to Data Import page,FALSE,FALSE
+open,data import wizard,open data import wizard,Open Data Import Wizard,FALSE,FALSE
+open,data export,open data export,Navigate to Data Export page,FALSE,FALSE
+open,bulk data load jobs,open bulk data load jobs,Navigate to Bulk Data Load Jobs monitoring,FALSE,FALSE
+open,import queue,open import queue,Navigate to Import Queue status,FALSE,FALSE
+open,mass delete records,open mass delete records,Navigate to Mass Delete Records page,FALSE,FALSE
+open,mass transfer records,open mass transfer records,Navigate to Mass Transfer Records page,FALSE,FALSE
+open,mass update records,open mass update records,Navigate to Mass Update Records page,FALSE,FALSE
+open,duplicate rules,open duplicate rules,Navigate to Duplicate Rules list,FALSE,FALSE
+open,duplicate rule {Object},open duplicate rule Account,Navigate to duplicate rules for object,FALSE,FALSE
+open,matching rules,open matching rules,Navigate to Matching Rules list,FALSE,FALSE
+open,matching rule {Object},open matching rule Lead,Navigate to matching rules for object,FALSE,FALSE
+open,storage usage,open storage usage,Navigate to Storage Usage page,FALSE,FALSE
+open,data storage,open data storage,Navigate to Data Storage details,FALSE,FALSE
+open,file storage,open file storage,Navigate to File Storage details,FALSE,FALSE
+open,big objects,open big objects,Navigate to Big Objects list,FALSE,FALSE
+open,app manager,open app manager,Navigate to App Manager,FALSE,FALSE
+open,app builder,open app builder,Navigate to Lightning App Builder home,FALSE,FALSE
+open,lightning app {Name},open lightning app Sales,Navigate to specific Lightning app settings,FALSE,FALSE
+open,lightning page {Name},open lightning page Home_Page,Open Lightning page in App Builder,FALSE,FALSE
+open,lightning pages,open lightning pages,Navigate to Lightning Pages list,FALSE,FALSE
+open,utility bar,open utility bar,Navigate to Utility Bar configuration,FALSE,FALSE
+open,home page layouts,open home page layouts,Navigate to Home Page Layouts,FALSE,FALSE
+open,home page components,open home page components,Navigate to Home Page Components,FALSE,FALSE
+open,dynamic forms {Object},open dynamic forms Account,Navigate to Dynamic Forms for object,FALSE,FALSE
+open,global actions,open global actions,Navigate to Global Actions list,FALSE,FALSE
+open,object actions {Object},open object actions Opportunity,Navigate to object-specific actions,FALSE,FALSE
+open,api usage,open api usage,Navigate to API Usage page,FALSE,FALSE
+open,api calls,open api calls,View API call monitoring,FALSE,FALSE
+open,connected apps,open connected apps,Navigate to Connected Apps list,FALSE,FALSE
+open,connected app {Name},open connected app Mobile_App,Navigate to specific connected app settings,FALSE,FALSE
+open,rest api explorer,open rest api explorer,Open REST API Explorer (if available),FALSE,FALSE
+open,soap api,open soap api,Navigate to SOAP API settings,FALSE,FALSE
+open,external services,open external services,Navigate to External Services list,FALSE,FALSE
+open,external service {Name},open external service Payment_Gateway,Navigate to specific external service,FALSE,FALSE
+open,named credentials,open named credentials,Navigate to Named Credentials list,FALSE,FALSE
+open,named credential {Name},open named credential AWS_Connection,Navigate to specific named credential,FALSE,FALSE
+open,remote site settings,open remote site settings,Navigate to Remote Site Settings,FALSE,FALSE
+open,remote site {Name},open remote site GitHub_API,Navigate to specific remote site setting,FALSE,FALSE
+open,platform events,open platform events,Navigate to Platform Events list,FALSE,FALSE
+open,platform event {Name},open platform event Order_Event__e,Navigate to specific platform event,FALSE,FALSE
+open,change data capture,open change data capture,Navigate to Change Data Capture settings,FALSE,FALSE
+open,cdc settings,open cdc settings,Navigate to CDC settings (alias),FALSE,FALSE
+open,outbound messages,open outbound messages,Navigate to Outbound Messages list,FALSE,FALSE
+open,outbound message {Name},open outbound message Case_Notification,Navigate to specific outbound message,FALSE,FALSE
+open,reports,open reports,Navigate to Reports home,FALSE,FALSE
+open,report {Name},open report Sales_Pipeline,Open specific report,FALSE,FALSE
+open,report builder,open report builder,Open new report builder,FALSE,FALSE
+open,dashboards,open dashboards,Navigate to Dashboards home,FALSE,FALSE
+open,dashboard {Name},open dashboard Executive_Dashboard,Open specific dashboard,FALSE,FALSE
+open,dashboard builder,open dashboard builder,Open new dashboard builder,FALSE,FALSE
+open,report types,open report types,Navigate to Report Types list,FALSE,FALSE
+open,report type {Name},open report type Accounts_and_Contacts,Navigate to specific report type,FALSE,FALSE
+open,einstein analytics,open einstein analytics,Navigate to Einstein Analytics (CRM Analytics),FALSE,FALSE
+open,analytics studio,open analytics studio,Open Analytics Studio,FALSE,FALSE
+open,crm analytics,open crm analytics,Navigate to CRM Analytics home,FALSE,FALSE
+open,apps,open apps,Navigate to Apps list,FALSE,FALSE
+open,canvas apps,open canvas apps,Navigate to Canvas Apps,FALSE,FALSE
+open,tabs,open tabs,Navigate to Tabs list in Setup,FALSE,FALSE
+open,tab {Name},open tab Accounts,Navigate to specific tab settings,FALSE,FALSE
+open,navigation menu,open navigation menu,Navigate to Navigation Menus configuration,FALSE,FALSE
+open,app navigation {Name},open app navigation Sales,Configure navigation for specific app,FALSE,FALSE
+open,company information,open company information,Navigate to Company Information page,FALSE,FALSE
+open,org details,open org details,Navigate to Organization details,FALSE,FALSE
+open,org limits,open org limits,Navigate to System Overview (org limits),FALSE,FALSE
+open,system overview,open system overview,Navigate to System Overview page,FALSE,FALSE
+open,deployment status,open deployment status,Navigate to Deployment Status page,FALSE,FALSE
+open,deploy,open deploy,Navigate to Deploy page,FALSE,FALSE
+open,change sets,open change sets,Navigate to Change Sets home,FALSE,FALSE
+open,inbound change sets,open inbound change sets,Navigate to Inbound Change Sets,FALSE,FALSE
+open,outbound change sets,open outbound change sets,Navigate to Outbound Change Sets,FALSE,FALSE
+open,change set {Name},open change set Feature_Release_v1,Navigate to specific change set,FALSE,FALSE
+open,installed packages,open installed packages,Navigate to Installed Packages list,FALSE,FALSE
+open,package manager,open package manager,Navigate to Package Manager,FALSE,FALSE
+open,managed packages,open managed packages,Navigate to Managed Packages list,FALSE,FALSE
+open,sandboxes,open sandboxes,Navigate to Sandboxes page,FALSE,FALSE
+open,sandbox {Name},open sandbox UAT_Sandbox,Navigate to specific sandbox details,FALSE,FALSE
+open,release updates,open release updates,Navigate to Release Updates,FALSE,FALSE
+open,critical updates,open critical updates,Navigate to Critical Updates,FALSE,FALSE
+open,record {Object} {ID},open record Account 001XXXXXXXXXXXX,Navigate to specific record detail page,FALSE,FALSE
+open,list view {Object},open list view Account,Navigate to default list view for object,FALSE,FALSE
+open,list view {Object} {View},open list view Opportunity My_Open_Opps,Navigate to specific list view,FALSE,FALSE
+open,recent {Object},open recent Contact,Navigate to recently viewed records for object,FALSE,FALSE
+open,recently viewed,open recently viewed,Navigate to Recently Viewed items,FALSE,FALSE
+open,metadata types,open metadata types,Navigate to Metadata Types (if available),FALSE,FALSE
+open,metadata coverage,open metadata coverage,View Metadata API coverage,FALSE,FALSE
+open,metadata api,open metadata api,Navigate to Metadata API information,FALSE,FALSE
+open,tooling api,open tooling api,Navigate to Tooling API explorer,FALSE,FALSE
+open,trace flags,open trace flags,Navigate to Debug Trace Flags,FALSE,FALSE
+open,checkpoint locations,open checkpoint locations,Navigate to Checkpoint Locations,FALSE,FALSE
+open,schema builder,open schema builder,Open Schema Builder,FALSE,FALSE
+open,lightning sync,open lightning sync,Navigate to Lightning Sync settings,FALSE,FALSE
+open,einstein activity capture,open einstein activity capture,Navigate to Einstein Activity Capture,FALSE,FALSE
+open,event monitoring,open event monitoring,Navigate to Event Monitoring,FALSE,FALSE
+open,event log files,open event log files,Navigate to Event Log Files,FALSE,FALSE
+open,transaction security policies,open transaction security policies,Navigate to Transaction Security Policies,FALSE,FALSE
+open,devops center,open devops center,Navigate to DevOps Center,FALSE,FALSE
+open,pipelines,open pipelines,Navigate to Deployment Pipelines,FALSE,FALSE
+open,work items,open work items,Navigate to Work Items in DevOps Center,FALSE,FALSE
+open,object details {Object},open object details Account,Navigate to object details page,FALSE,FALSE
+open,object limits,open object limits,View org object limits,FALSE,FALSE
+open,object relationships {Object},open object relationships Contact,View object relationships diagram,FALSE,FALSE
+open,fields {Object},open fields Account,Navigate to fields list for object,FALSE,FALSE
+open,field editor {Object},open field editor Opportunity,Open field editor for object,FALSE,FALSE
+open,field dependencies {Object},open field dependencies Case,View field dependencies for object,FALSE,FALSE
+open,field history {Object} {Field},open field history Account Name,View field history tracking settings,FALSE,FALSE
+open,page layouts {Object},open page layouts Lead,Navigate to page layouts list for object,FALSE,FALSE
+open,page layout {Object} {Layout},open page layout Contact Standard,Navigate to specific page layout,FALSE,FALSE
+open,page layout assignment {Object},open page layout assignment Account,View page layout assignments for object,FALSE,FALSE
+open,record types {Object},open record types Opportunity,Navigate to record types for object,FALSE,FALSE
+open,record type {Object} {Name},open record type Case Customer_Support,Navigate to specific record type,FALSE,FALSE
+open,record type assignment {Object},open record type assignment Lead,View record type assignments,FALSE,FALSE
+open,validation rules {Object},open validation rules Account,Navigate to validation rules for object,FALSE,FALSE
+open,validation rule {Object} {Name},open validation rule Opportunity Discount_Check,Navigate to specific validation rule,FALSE,FALSE
+open,compact layouts {Object},open compact layouts Contact,Navigate to compact layouts for object,FALSE,FALSE
+open,compact layout {Object} {Name},open compact layout Account Primary,Navigate to specific compact layout,FALSE,FALSE
+open,buttons {Object},open buttons Case,Navigate to buttons and links for object,FALSE,FALSE
+open,button {Object} {Name},open button Account New_with_Address,Navigate to specific button details,FALSE,FALSE
+open,action {Object} {Name},open action Opportunity Quick_Update,Navigate to specific action details,FALSE,FALSE
+create,user,create user,Launch quick user creation wizard,FALSE,FALSE
+create,account,create account,Launch quick account creation form,FALSE,FALSE
+create,contact,create contact,Launch quick contact creation form,FALSE,FALSE
+create,opportunity,create opportunity,Launch quick opportunity creation form,FALSE,FALSE
+create,case,create case,Launch quick case creation form,FALSE,FALSE
+create,lead,create lead,Launch quick lead creation form,FALSE,FALSE
+create,campaign,create campaign,Launch quick campaign creation form,FALSE,FALSE
+create,sandbox,create sandbox,Launch sandbox creation wizard,FALSE,FALSE
+create,field {Object},create field Account,Launch field creation wizard for object,FALSE,FALSE
+create,object,create object,Launch custom object creation wizard,FALSE,FALSE
+create,validation {Object},create validation Account,Launch validation rule creation for object,FALSE,FALSE
+create,flow,create flow,Launch Flow Builder with new flow,FALSE,FALSE
+create,apex class,create apex class,Create new Apex class template,FALSE,FALSE
+create,trigger {Object},create trigger Account,Create new Apex trigger for object,FALSE,FALSE
+create,permission set,create permission set,Launch permission set creation wizard,FALSE,FALSE
+create,profile,create profile,Launch profile creation wizard (clone),FALSE,FALSE
+create,public group,create public group,Launch public group creation,FALSE,FALSE
+create,role,create role,Launch role creation in role hierarchy,FALSE,FALSE
+create,email template,create email template,Launch email template creation wizard,FALSE,FALSE
+create,report,create report,Launch report builder for new report,FALSE,FALSE
+create,dashboard,create dashboard,Launch dashboard builder for new dashboard,FALSE,FALSE
+create,list view {Object},create list view Account,Create new list view for object,FALSE,FALSE
+create,page layout {Object},create page layout Contact,Create new page layout for object,FALSE,FALSE
+create,record type {Object},create record type Opportunity,Create new record type for object,FALSE,FALSE
+create,lightning page,create lightning page,Launch Lightning App Builder for new page,FALSE,FALSE
+create,lightning app,create lightning app,Launch Lightning App creation wizard,FALSE,FALSE
+create,visualforce page,create visualforce page,Create new Visualforce page,FALSE,FALSE
+create,lightning component,create lightning component,Create new Lightning component,FALSE,FALSE
+create,static resource,create static resource,Upload new static resource,FALSE,FALSE
+create,custom metadata type,create custom metadata type,Create new custom metadata type,FALSE,FALSE
+create,custom setting,create custom setting,Create new custom setting,FALSE,FALSE
+create,remote site,create remote site,Add new remote site setting,FALSE,FALSE
+create,named credential,create named credential,Create new named credential,FALSE,FALSE
+create,connected app,create connected app,Create new connected app,FALSE,FALSE
+create,platform event,create platform event,Create new platform event,FALSE,FALSE
+create,approval process {Object},create approval process Account,Launch approval process wizard for object,FALSE,FALSE
+create,workflow rule {Object},create workflow rule Case,Create new workflow rule for object,FALSE,FALSE
+create,sharing rule {Object},create sharing rule Lead,Create new sharing rule for object,FALSE,FALSE
+create,duplicate rule {Object},create duplicate rule Contact,Create new duplicate rule for object,FALSE,FALSE
+create,matching rule {Object},create matching rule Lead,Create new matching rule for object,FALSE,FALSE
+create,change set,create change set,Create new outbound change set,FALSE,FALSE
+search,user {Query},search user john,Search for users by name or email,FALSE,FALSE
+search,record {Object} {Query},search record Account Acme,Search records in specific object,FALSE,FALSE
+search,field {Query},search field email,Search for fields across all objects,FALSE,FALSE
+search,apex {Query},search apex AccountController,Search Apex classes and triggers,FALSE,FALSE
+search,flow {Query},search flow account,Search flows by name,FALSE,FALSE
+search,report {Query},search report sales,Search reports by name,FALSE,FALSE
+search,dashboard {Query},search dashboard executive,Search dashboards by name,FALSE,FALSE
+search,metadata {Query},search metadata validation,Search metadata components,FALSE,FALSE
+search,global {Query},search global acme,Global search across Salesforce,FALSE,FALSE
+edit,user {Username},edit user john@example.com,Open user edit page,FALSE,FALSE
+edit,record {Object} {ID},edit record Account 001XXXXXXXXXXXX,Open record edit page,FALSE,FALSE
+edit,field {Object}.{Field},edit field Account.Industry,Edit field metadata,FALSE,FALSE
+edit,object {Object},edit object CustomObject__c,Edit object metadata,FALSE,FALSE
+edit,profile {Name},edit profile System Administrator,Edit profile settings,FALSE,FALSE
+edit,permission set {Name},edit permission set API_Access,Edit permission set,FALSE,FALSE
+edit,flow {Name},edit flow Account_Creation,Open flow in edit mode,FALSE,FALSE
+edit,validation rule {Object} {Name},edit validation rule Account Min_Revenue,Edit validation rule,FALSE,FALSE
+edit,workflow rule {Object} {Name},edit workflow rule Case Auto_Assign,Edit workflow rule,FALSE,FALSE
+edit,page layout {Object} {Layout},edit page layout Contact Standard,Edit page layout,FALSE,FALSE
+delete,field {Object}.{Field},delete field Account.OldField__c,Delete field with safety checks,FALSE,FALSE
+delete,record {Object} {ID},delete record Account 001XXXXXXXXXXXX,Delete specific record,FALSE,FALSE
+delete,user {Username},delete user test@example.com,Deactivate user (safety check),FALSE,FALSE
+delete,validation rule {Object} {Name},delete validation rule Account Test_Rule,Delete validation rule,FALSE,FALSE
+delete,flow {Name},delete flow Old_Process_Flow,Delete flow (with dependency check),FALSE,FALSE
+delete,apex class {Name},delete apex class OldController,Delete Apex class (with dependency check),FALSE,FALSE
+clone,user {Username},clone user john@example.com,Clone user and permissions to new user,FALSE,FALSE
+clone,profile {Name},clone profile Standard User,Clone profile to create new one,FALSE,FALSE
+clone,permission set {Name},clone permission set Developer_Access,Clone permission set,FALSE,FALSE
+clone,record {Object} {ID},clone record Opportunity 006XXXXXXXXXXXX,Clone record with prepopulated fields,FALSE,FALSE
+clone,page layout {Object} {Layout},clone page layout Account Standard,Clone page layout,FALSE,FALSE
+clone,flow {Name},clone flow Lead_Conversion,Clone existing flow,FALSE,FALSE
+analyze,permissions {Username},analyze permissions john@example.com,Analyze user's effective permissions,FALSE,FALSE
+analyze,limits,analyze limits,Show org limits usage and capacity,FALSE,FALSE
+analyze,dependencies {Object/Field},analyze dependencies Account.CustomField__c,Show where field/object is used,FALSE,FALSE
+analyze,api usage,analyze api usage,Show API usage statistics,FALSE,FALSE
+analyze,storage,analyze storage,Show data and file storage usage,FALSE,FALSE
+analyze,security,analyze security,Run security health check,FALSE,FALSE
+analyze,performance {Object},analyze performance Account,Show performance metrics for object,FALSE,FALSE
+run,apex {Code},run apex System.debug('test'),Execute anonymous Apex code,FALSE,FALSE
+run,soql {Query},run soql SELECT Id FROM Account,Execute SOQL query,FALSE,FALSE
+run,flow {Name},run flow Test_Flow,Execute flow for testing,FALSE,FALSE
+run,test {Class},run test AccountControllerTest,Run specific Apex test class,FALSE,FALSE
+run,all tests,run all tests,Run all Apex tests in org,FALSE,FALSE
+export,data {Object},export data Account,Export data from object to CSV,FALSE,FALSE
+export,metadata {Type},export metadata ApexClass,Export metadata of specific type,FALSE,FALSE
+export,report {Name},export report Sales_Pipeline,Export report data,FALSE,FALSE
+export,users,export users,Export user list with details,FALSE,FALSE
+compare,sandboxes,compare sandboxes,Compare metadata between sandboxes,FALSE,FALSE
+compare,fields {Object},compare fields Account,Compare fields across orgs,FALSE,FALSE
+compare,profiles {Name1} {Name2},compare profiles Admin vs User,Compare two profiles side by side,FALSE,FALSE
+import,data {Object},import data Account,Import data into object from CSV,FALSE,FALSE
+import,metadata,import metadata,Import metadata from package,FALSE,FALSE
+assign,permission set {Name} {User},assign permission set API_Access john@example.com,Assign permission set to user,FALSE,FALSE
+assign,profile {Name} {User},assign profile Developer john@example.com,Assign profile to user,FALSE,FALSE
+deploy,change set {Name},deploy change set Feature_v1,Deploy inbound change set,FALSE,FALSE
+deploy,metadata,deploy metadata,Deploy metadata from package,FALSE,FALSE
+refresh,sandbox {Name},refresh sandbox UAT,Refresh specific sandbox,FALSE,FALSE
+activate,flow {Name},activate flow Account_Process,Activate a flow,FALSE,FALSE
+deactivate,flow {Name},deactivate flow Old_Process,Deactivate a flow,FALSE,FALSE
+activate,validation rule {Object} {Name},activate validation rule Account Revenue_Check,Activate validation rule,FALSE,FALSE
+deactivate,validation rule {Object} {Name},deactivate validation rule Account Test_Rule,Deactivate validation rule,FALSE,FALSE
+freeze,user {Username},freeze user contractor@example.com,Freeze user account,FALSE,FALSE
+unfreeze,user {Username},unfreeze user contractor@example.com,Unfreeze user account,FALSE,FALSE
+reset,password {Username},reset password john@example.com,Reset user password and send email,FALSE,FALSE
+grant,login access {Username},grant login access john@example.com,Grant login access to user,FALSE,FALSE
+debug,apex {Class/Trigger},debug apex AccountTrigger,Set up debug logging for Apex,FALSE,FALSE
+debug,flow {Name},debug flow Account_Creation,Enable debug mode for flow,FALSE,FALSE
+monitor,api,monitor api,Open API usage monitoring dashboard,FALSE,FALSE
+monitor,jobs,monitor jobs,Open Apex jobs monitoring,FALSE,FALSE
+monitor,limits,monitor limits,Monitor org limits in real-time,FALSE,FALSE
+view,dependencies {Component},view dependencies CustomField__c,View component dependencies,FALSE,FALSE
+view,usage {Component},view usage AccountTrigger,View where component is used,FALSE,FALSE
+view,history {Object} {ID},view history Account 001XXXXXXXXXXXX,View record field history,FALSE,FALSE
+view,setup audit trail,view setup audit trail,View setup audit trail,FALSE,FALSE
+backup,metadata,backup metadata,Export all metadata for backup,FALSE,FALSE
+restore,metadata {Backup},restore metadata 2024-05-01,Restore metadata from backup,FALSE,FALSE
+schedule,apex {Class},schedule apex BatchProcess,Schedule Apex class execution,FALSE,FALSE
+schedule,flow {Name},schedule flow Daily_Update,Schedule flow execution,FALSE,FALSE
+download,log {ID},download log 07LXXXXXXXXXXXX,Download debug log file,FALSE,FALSE
+clear,debug logs,clear debug logs,Clear all debug logs,FALSE,FALSE

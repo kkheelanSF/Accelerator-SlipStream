@@ -339,6 +339,276 @@ class URLBuilder {
   }
 
   /**
+   * Debug Logs
+   */
+  openDebugLogs() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexDebugLogs/home`;
+  }
+
+  /**
+   * Debug Log (specific log by ID)
+   */
+  openDebugLog(params) {
+    const { logId } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexDebugLogs/${logId}/view`;
+  }
+
+  /**
+   * System Log / System Overview
+   */
+  openSystemLog() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/SystemOverview/home`;
+  }
+
+  /**
+   * Event Log / Event Monitoring
+   */
+  openEventLog() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/EventManager/home`;
+  }
+
+  /**
+   * Email Logs
+   */
+  openEmailLogs() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/EmailLogFiles/home`;
+  }
+
+  /**
+   * Scheduled Jobs
+   */
+  openScheduledJobs() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ScheduledJobs/home`;
+  }
+
+  /**
+   * Users (All Users list)
+   */
+  openUsers() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ManageUsers/home`;
+  }
+
+  /**
+   * User by Username or ID
+   */
+  openUser(params) {
+    const { userIdentifier } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+
+    // If it's a 15 or 18 character ID starting with 005, use direct ID navigation
+    if (userIdentifier.match(/^005[a-zA-Z0-9]{12,15}$/)) {
+      return `${setupBaseUrl}/lightning/setup/ManageUsers/${userIdentifier}/view`;
+    }
+
+    // Otherwise, it's a username/email - navigate to users list with search
+    return `${setupBaseUrl}/lightning/setup/ManageUsers/home?search=${encodeURIComponent(userIdentifier)}`;
+  }
+
+  /**
+   * Active Users
+   */
+  openActiveUsers() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ManageUsers/home?filterScope=Active`;
+  }
+
+  /**
+   * Frozen Users
+   */
+  openFrozenUsers() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ManageUsers/home?filterScope=Frozen`;
+  }
+
+  /**
+   * Profiles (All Profiles list)
+   */
+  openProfiles() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/Profiles/home`;
+  }
+
+  /**
+   * Profile by Name
+   */
+  openProfile(params) {
+    const { profileName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    // Navigate to profiles list with search
+    return `${setupBaseUrl}/lightning/setup/Profiles/home?search=${encodeURIComponent(profileName)}`;
+  }
+
+  /**
+   * Permission Sets
+   */
+  openPermissionSets() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/PermSets/home`;
+  }
+
+  /**
+   * Permission Set by Name
+   */
+  openPermissionSet(params) {
+    const { permissionSetName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    // Navigate to permission sets list with search
+    return `${setupBaseUrl}/lightning/setup/PermSets/home?search=${encodeURIComponent(permissionSetName)}`;
+  }
+
+  /**
+   * Permission Set Groups
+   */
+  openPermissionSetGroups() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/PermSetGroups/home`;
+  }
+
+  /**
+   * Permission Set Group by Name
+   */
+  openPermissionSetGroup(params) {
+    const { groupName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    // Navigate to permission set groups list with search
+    return `${setupBaseUrl}/lightning/setup/PermSetGroups/home?search=${encodeURIComponent(groupName)}`;
+  }
+
+  /**
+   * Apex Classes
+   */
+  openApexClasses() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexClasses/home`;
+  }
+
+  /**
+   * Apex Class by Name
+   */
+  openApexClass(params) {
+    const { className } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexClasses/home?search=${encodeURIComponent(className)}`;
+  }
+
+  /**
+   * Apex Triggers
+   */
+  openApexTriggers() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexTriggers/home`;
+  }
+
+  /**
+   * Apex Trigger by Name
+   */
+  openApexTrigger(params) {
+    const { triggerName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexTriggers/home?search=${encodeURIComponent(triggerName)}`;
+  }
+
+  /**
+   * Apex Test Execution
+   */
+  openApexTestExecution() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexTestQueue/home`;
+  }
+
+  /**
+   * Apex Jobs
+   */
+  openApexJobs() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexJobs/home`;
+  }
+
+  /**
+   * Anonymous Apex (Execute Anonymous Window)
+   */
+  openAnonymousApex() {
+    const classicUrl = this.getClassicUrl();
+    return `${classicUrl}/setup/apex/ApexExecuteAnonymous.apexp`;
+  }
+
+  /**
+   * Visualforce Pages
+   */
+  openVisualforcePages() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexPages/home`;
+  }
+
+  /**
+   * Visualforce Page by Name
+   */
+  openVisuaforcePage(params) {
+    const { pageName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexPages/home?search=${encodeURIComponent(pageName)}`;
+  }
+
+  /**
+   * Visualforce Components
+   */
+  openVisualforceComponents() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexComponents/home`;
+  }
+
+  /**
+   * Visualforce Component by Name
+   */
+  openVisualforceComponent(params) {
+    const { componentName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/ApexComponents/home?search=${encodeURIComponent(componentName)}`;
+  }
+
+  /**
+   * Lightning Components
+   */
+  openLightningComponents() {
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/LightningComponentBundles/home`;
+  }
+
+  /**
+   * Lightning Component by Name
+   */
+  openLightningComponent(params) {
+    const { componentName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/LightningComponentBundles/home?search=${encodeURIComponent(componentName)}`;
+  }
+
+  /**
+   * Aura Bundle by Name
+   */
+  openAuraBundle(params) {
+    const { bundleName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/LightningComponentBundles/home?search=${encodeURIComponent(bundleName)}`;
+  }
+
+  /**
+   * LWC (Lightning Web Component) by Name
+   */
+  openLWC(params) {
+    const { componentName } = params;
+    const setupBaseUrl = this.getSetupBaseUrl();
+    return `${setupBaseUrl}/lightning/setup/LightningComponentBundles/home?search=${encodeURIComponent(componentName)}`;
+  }
+
+  /**
    * Get Classic Salesforce URL from Lightning URL
    */
   getClassicUrl() {
@@ -347,6 +617,19 @@ class URLBuilder {
     // Convert Lightning URL to Classic URL
     if (hostname.includes('.lightning.force.com')) {
       const instance = hostname.split('.')[0];
+
+      // Check if it's a sandbox by checking if instance contains '--'
+      // Example: company--sandbox.lightning.force.com
+      if (instance.includes('--')) {
+        // Convert to my.salesforce.com format for sandbox
+        // company--sandbox -> company.sandbox.my.salesforce.com
+        const parts = instance.split('--');
+        const org = parts[0];
+        const sandboxName = parts.slice(1).join('.');
+        return `https://${org}.${sandboxName}.my.salesforce.com`;
+      }
+
+      // Production org
       return `https://${instance}.salesforce.com`;
     }
 
