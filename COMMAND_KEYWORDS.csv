@@ -20,15 +20,15 @@ open,developer console,open developer console,Open Salesforce Developer Console 
 open,debug logs,open debug logs,Navigate to Debug Logs page,TRUE,TRUE,,Yes
 open,debug log {ID},open debug log 07LXXXXXXXXXXXX,Open specific debug log viewer,TRUE,TRUE,,Yes
 open,users,open users,Navigate to Users list in Setup,TRUE,TRUE,,Yes,"Open in new tab, not working"
-open,user {Username},open user john@example.com,Navigate to specific user details page,TRUE,TRUE
-open,user {UserID},open user 005XXXXXXXXXXXX,Navigate to specific user details by ID,TRUE,TRUE
-open,active users,open active users,Navigate to active users list,TRUE,FALSE,,No,Not possible - no URL filter parameter available
-open,frozen users,open frozen users,Navigate to frozen users list,TRUE,FALSE,,No,Not possible - no URL filter parameter available
-open,profiles,open profiles,Navigate to Profiles list in Setup,TRUE,TRUE
-open,profile {Name},open profile System Administrator,Navigate to specific profile details,TRUE,TRUE
-open,permission sets,open permission sets,Navigate to Permission Sets list,TRUE,TRUE
-open,permission set {Name},open permission set API_Access,Navigate to specific permission set details,TRUE,TRUE
-open,permission set groups,open permission set groups,Navigate to Permission Set Groups,TRUE,TRUE
+open,user {Username},open user john@example.com,Navigate to specific user details page,TRUE,TRUE,,Yes
+open,user {UserID},open user 005XXXXXXXXXXXX,Navigate to specific user details by ID,TRUE,TRUE,,Yes
+open,active users,open active users,Navigate to active users list,FALSE,FALSE,,Not possible
+open,frozen users,open frozen users,Navigate to frozen users list,FALSE,FALSE,,Not possible
+open,profiles,open profiles,Navigate to Profiles list in Setup,TRUE,TRUE,,Yes
+open,profile {Name},open profile System Administrator,Navigate to specific profile details,TRUE,TRUE,,"Yes, Partial",Does not give suggestions based on user's entry
+open,permission sets,open permission sets,Navigate to Permission Sets list,TRUE,TRUE,,Yes
+open,permission set {Name},open permission set API_Access,Navigate to specific permission set details,TRUE,TRUE,,"Yes, Partial",Does not give suggestions based on user's entry
+open,permission set groups,open permission set groups,Navigate to Permission Set Groups,TRUE,TRUE,,Yes
 open,permission set group {Name},open permission set group Developer_Group,Navigate to specific permission set group,TRUE,TRUE
 open,apex classes,open apex classes,Navigate to Apex Classes list,TRUE,TRUE
 open,apex class {Name},open apex class AccountController,Navigate to specific Apex class editor,TRUE,TRUE
