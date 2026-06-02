@@ -700,6 +700,7 @@ class URLBuilder {
     // Handlers that should always open in new tab
     const newTabHandlers = [
       'openDevConsole',
+      'openDebugLogs',
       'openDebugLog',
       'openAnonymousApex'
     ];
