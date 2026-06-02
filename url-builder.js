@@ -697,8 +697,14 @@ class URLBuilder {
       return false;
     }
 
-    // Dev Console always opens in new tab
-    if (handlerName === 'openDevConsole') {
+    // Handlers that should always open in new tab
+    const newTabHandlers = [
+      'openDevConsole',
+      'openDebugLog',
+      'openAnonymousApex'
+    ];
+
+    if (newTabHandlers.includes(handlerName)) {
       openInNewTab = true;
     }
 
