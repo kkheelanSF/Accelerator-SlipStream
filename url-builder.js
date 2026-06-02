@@ -490,6 +490,25 @@ class URLBuilder {
   }
 
   /**
+   * Lookup permission set group ID by name using Salesforce API
+   */
+  async lookupPermissionSetGroupId(groupName) {
+    try {
+      const api = new SalesforceAPI();
+      await api.init();
+
+      const query = `SELECT Id FROM PermissionSetGroup WHERE DeveloperName = '${groupName.replace(/'/g, "\\'")}' OR MasterLabel = '${groupName.replace(/'/g, "\\'")}' LIMIT 1`;
+      const result = await api.query(query);
+      if (result && result.records && result.records.length > 0) {
+        return result.records[0].Id;
+      }
+    } catch (error) {
+      console.error('Error looking up permission set group ID:', error);
+    }
+    return null;
+  }
+
+  /**
    * Active Users
    * NOT IMPLEMENTED - No URL filter available for active users
    */
@@ -582,10 +601,24 @@ class URLBuilder {
   /**
    * Permission Set Group by Name
    */
-  openPermissionSetGroup(params) {
+  async openPermissionSetGroup(params) {
     const { groupName } = params;
     const setupBaseUrl = this.getSetupBaseUrl();
-    // Navigate to permission set groups list with search
+
+    // Try to lookup permission set group ID via API
+    try {
+      const groupId = await this.lookupPermissionSetGroupId(groupName);
+      if (groupId) {
+        // Use page wrapper format with encoded permission set group detail URL
+        const groupDetailPath = `/${groupId}`;
+        const encodedPath = encodeURIComponent(groupDetailPath);
+        return `${setupBaseUrl}/lightning/setup/PermSetGroups/page?address=${encodedPath}`;
+      }
+    } catch (error) {
+      console.warn('Failed to lookup permission set group ID, falling back to search:', error);
+    }
+
+    // Fallback: navigate to permission set groups list with search
     return `${setupBaseUrl}/lightning/setup/PermSetGroups/home?search=${encodeURIComponent(groupName)}`;
   }
 
