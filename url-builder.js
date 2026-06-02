@@ -436,13 +436,14 @@ class URLBuilder {
    */
   async lookupUserId(username) {
     try {
-      // Use the global SalesforceAPI if available
-      if (typeof SalesforceAPI !== 'undefined') {
-        const query = `SELECT Id FROM User WHERE Username = '${username.replace(/'/g, "\\'")}' LIMIT 1`;
-        const result = await SalesforceAPI.query(query);
-        if (result && result.records && result.records.length > 0) {
-          return result.records[0].Id;
-        }
+      // Initialize SalesforceAPI if not already done
+      const api = new SalesforceAPI();
+      await api.init();
+
+      const query = `SELECT Id FROM User WHERE Username = '${username.replace(/'/g, "\\'")}' LIMIT 1`;
+      const result = await api.query(query);
+      if (result && result.records && result.records.length > 0) {
+        return result.records[0].Id;
       }
     } catch (error) {
       console.error('Error looking up user ID:', error);

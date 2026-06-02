@@ -231,6 +231,15 @@ class SalesforceAPI {
   }
 
   /**
+   * Execute SOQL query
+   */
+  async query(soql) {
+    console.log(`🔍 Executing SOQL query: ${soql}`);
+    const encodedQuery = encodeURIComponent(soql);
+    return await this.callAPI(`/query/?q=${encodedQuery}`);
+  }
+
+  /**
    * Make Tooling API call
    * Routes through background worker to avoid CORS issues
    */
