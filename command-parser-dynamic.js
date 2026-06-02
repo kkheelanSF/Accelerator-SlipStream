@@ -45,7 +45,7 @@ class DynamicCommandParser {
       await this.init();
     }
 
-    const trimmedInput = input.trim().toLowerCase();
+    const trimmedInput = input.trim();
 
     if (!trimmedInput) {
       return this.getDefaultSuggestions();
@@ -54,11 +54,14 @@ class DynamicCommandParser {
     const suggestions = [];
 
     // Parse command structure
-    const parts = trimmedInput.split(/\s+/);
+    // Keep original case for extracting IDs and case-sensitive values
+    const originalParts = trimmedInput.split(/\s+/);
+    // Use lowercase for keyword matching
+    const parts = trimmedInput.toLowerCase().split(/\s+/);
     const keyword = parts[0]; // "open", "create", etc.
 
     if (keyword === 'open') {
-      return await this.parseOpenCommand(parts);
+      return await this.parseOpenCommand(parts, originalParts);
     }
 
     return suggestions;
@@ -67,7 +70,7 @@ class DynamicCommandParser {
   /**
    * Parse "open" commands
    */
-  async parseOpenCommand(parts) {
+  async parseOpenCommand(parts, originalParts = parts) {
     const suggestions = [];
 
     // open setup
@@ -122,7 +125,7 @@ class DynamicCommandParser {
       }
       // open debug log {ID}
       if (parts.length === 4 && parts[2] === 'log') {
-        const logId = parts[3];
+        const logId = originalParts[3]; // Use original case for ID
         suggestions.push({
           command: `open debug log ${logId}`,
           description: 'Open specific debug log viewer',
