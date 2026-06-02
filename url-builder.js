@@ -452,19 +452,59 @@ class URLBuilder {
   }
 
   /**
+   * Lookup profile ID by name using Salesforce API
+   */
+  async lookupProfileId(profileName) {
+    try {
+      const api = new SalesforceAPI();
+      await api.init();
+
+      const query = `SELECT Id FROM Profile WHERE Name = '${profileName.replace(/'/g, "\\'")}' LIMIT 1`;
+      const result = await api.query(query);
+      if (result && result.records && result.records.length > 0) {
+        return result.records[0].Id;
+      }
+    } catch (error) {
+      console.error('Error looking up profile ID:', error);
+    }
+    return null;
+  }
+
+  /**
+   * Lookup permission set ID by name using Salesforce API
+   */
+  async lookupPermissionSetId(permSetName) {
+    try {
+      const api = new SalesforceAPI();
+      await api.init();
+
+      const query = `SELECT Id FROM PermissionSet WHERE Name = '${permSetName.replace(/'/g, "\\'")}' OR Label = '${permSetName.replace(/'/g, "\\'")}' LIMIT 1`;
+      const result = await api.query(query);
+      if (result && result.records && result.records.length > 0) {
+        return result.records[0].Id;
+      }
+    } catch (error) {
+      console.error('Error looking up permission set ID:', error);
+    }
+    return null;
+  }
+
+  /**
    * Active Users
+   * NOT IMPLEMENTED - No URL filter available for active users
    */
   openActiveUsers() {
     const setupBaseUrl = this.getSetupBaseUrl();
-    return `${setupBaseUrl}/lightning/setup/ManageUsers/home?filterScope=Active`;
+    return `${setupBaseUrl}/lightning/setup/ManageUsers/home`;
   }
 
   /**
    * Frozen Users
+   * NOT IMPLEMENTED - No URL filter available for frozen users
    */
   openFrozenUsers() {
     const setupBaseUrl = this.getSetupBaseUrl();
-    return `${setupBaseUrl}/lightning/setup/ManageUsers/home?filterScope=Frozen`;
+    return `${setupBaseUrl}/lightning/setup/ManageUsers/home`;
   }
 
   /**
@@ -472,17 +512,31 @@ class URLBuilder {
    */
   openProfiles() {
     const setupBaseUrl = this.getSetupBaseUrl();
-    return `${setupBaseUrl}/lightning/setup/Profiles/home`;
+    return `${setupBaseUrl}/lightning/setup/EnhancedProfiles/home`;
   }
 
   /**
    * Profile by Name
    */
-  openProfile(params) {
+  async openProfile(params) {
     const { profileName } = params;
     const setupBaseUrl = this.getSetupBaseUrl();
-    // Navigate to profiles list with search
-    return `${setupBaseUrl}/lightning/setup/Profiles/home?search=${encodeURIComponent(profileName)}`;
+
+    // Try to lookup profile ID via API
+    try {
+      const profileId = await this.lookupProfileId(profileName);
+      if (profileId) {
+        // Use page wrapper format with encoded profile detail URL
+        const profileDetailPath = `/${profileId}`;
+        const encodedPath = encodeURIComponent(profileDetailPath);
+        return `${setupBaseUrl}/lightning/setup/EnhancedProfiles/page?address=${encodedPath}`;
+      }
+    } catch (error) {
+      console.warn('Failed to lookup profile ID, falling back to search:', error);
+    }
+
+    // Fallback: navigate to profiles list with search
+    return `${setupBaseUrl}/lightning/setup/EnhancedProfiles/home?search=${encodeURIComponent(profileName)}`;
   }
 
   /**
@@ -496,10 +550,24 @@ class URLBuilder {
   /**
    * Permission Set by Name
    */
-  openPermissionSet(params) {
+  async openPermissionSet(params) {
     const { permissionSetName } = params;
     const setupBaseUrl = this.getSetupBaseUrl();
-    // Navigate to permission sets list with search
+
+    // Try to lookup permission set ID via API
+    try {
+      const permSetId = await this.lookupPermissionSetId(permissionSetName);
+      if (permSetId) {
+        // Use page wrapper format with encoded permission set detail URL
+        const permSetDetailPath = `/${permSetId}`;
+        const encodedPath = encodeURIComponent(permSetDetailPath);
+        return `${setupBaseUrl}/lightning/setup/PermSets/page?address=${encodedPath}`;
+      }
+    } catch (error) {
+      console.warn('Failed to lookup permission set ID, falling back to search:', error);
+    }
+
+    // Fallback: navigate to permission sets list with search
     return `${setupBaseUrl}/lightning/setup/PermSets/home?search=${encodeURIComponent(permissionSetName)}`;
   }
 

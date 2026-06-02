@@ -211,29 +211,29 @@ class DynamicCommandParser {
       }
     }
 
-    // open active users
-    if (secondKeyword === 'active' && parts.length === 3 && parts[2] === 'users') {
-      suggestions.push({
-        command: 'open active users',
-        description: 'Navigate to active users list',
-        category: 'User Management',
-        handler: 'openActiveUsers',
-        params: {},
-        score: 1000
-      });
-    }
+    // open active users (NOT IMPLEMENTED - no URL filter available)
+    // if (secondKeyword === 'active' && parts.length === 3 && parts[2] === 'users') {
+    //   suggestions.push({
+    //     command: 'open active users',
+    //     description: 'Navigate to active users list',
+    //     category: 'User Management',
+    //     handler: 'openActiveUsers',
+    //     params: {},
+    //     score: 1000
+    //   });
+    // }
 
-    // open frozen users
-    if (secondKeyword === 'frozen' && parts.length === 3 && parts[2] === 'users') {
-      suggestions.push({
-        command: 'open frozen users',
-        description: 'Navigate to frozen users list',
-        category: 'User Management',
-        handler: 'openFrozenUsers',
-        params: {},
-        score: 1000
-      });
-    }
+    // open frozen users (NOT IMPLEMENTED - no URL filter available)
+    // if (secondKeyword === 'frozen' && parts.length === 3 && parts[2] === 'users') {
+    //   suggestions.push({
+    //     command: 'open frozen users',
+    //     description: 'Navigate to frozen users list',
+    //     category: 'User Management',
+    //     handler: 'openFrozenUsers',
+    //     params: {},
+    //     score: 1000
+    //   });
+    // }
 
     // open profiles
     if (secondKeyword === 'profiles' || secondKeyword === 'profile') {

@@ -1,7 +1,7 @@
 Keyword,Second Keyword,Full Command Example,Description/Achievement,To Implement?,Implemented?,Redirect Link,Test Success?,Test Comment
 open,setup,open setup,Navigate to Setup home page,TRUE,TRUE,,Yes
 open,setup home,open setup home,Navigate to Setup home page (alias),TRUE,TRUE,,Yes
-open,setup quick find,open setup quick find [term],Quick Find search in Setup,TRUE,TRUE
+open,setup quick find,open setup quick find [term],Quick Find search in Setup,TRUE,FALSE,,No,"Launches only, setup does not search but defer for now"
 open,object manager,open object manager,Navigate to Object Manager,TRUE,TRUE,,Yes
 open,setup {Object},open setup Account,Navigate to specific object in Object Manager,TRUE,TRUE,,Yes
 open,setup {Object} Fields,open setup Account Fields,Navigate to Fields & Relationships for object,TRUE,TRUE,,Yes
@@ -9,21 +9,21 @@ open,setup {Object} Field {Field},open setup Account Field Industry,Navigate to 
 "open ",setup {Object} Layouts,open setup Account Layouts,Navifate to layouts home,TRUE,TRUE,,Yes
 open,setup {Object} Layout {Layout},open setup Account Layout Standard,Navigate to specific page layout editor,TRUE,TRUE,,Yes
 open,setup {Object} FlexiPages,open setup Account FlexiPages,Navigate to lightning record pages home,TRUE,TRUE,,Yes
-open,setup {Object} FlexiPage {FlexiPage},open setup Account FlexiPage Account_Record_Page,Navigate to Lightning page builder for specific page,TRUE,TRUE,"Yes, Now uses API to lookup FlexiPage ID",Yes,Fixed - Now looks up FlexiPage ID and navigates directly to page builder
+open,setup {Object} FlexiPage {FlexiPage},open setup Account FlexiPage Account_Record_Page,Navigate to Lightning page builder for specific page,TRUE,TRUE,"Yes, Now uses API to lookup FlexiPage ID",Yes,
 open,setup {Object} ValidationRules,open setup Account ValidationRules,Navigate to validation rules list for object,TRUE,TRUE,,Yes
 open,setup {Object} Triggers,open setup Account Triggers,Navigate to triggers list for object,TRUE,TRUE,,Yes
 open,setup {Object} Buttons,open setup Account Buttons,Navigate to buttons and links for object,TRUE,TRUE,,Yes
 open,setup {Object} CompactLayouts,open setup Account CompactLayouts,Navigate to compact layouts for object,TRUE,TRUE,,Yes
 open,setup {Object} RecordTypes,open setup Account RecordTypes,Navigate to record types for object,TRUE,TRUE,,Yes
-open,dev console,open dev console,Open Salesforce Developer Console in new tab,TRUE,TRUE,https://{}.sandbox.my.salesforce.com/_ui/common/apex/debug/ApexCSIPage,Yes,Fixed sandbox URL handling
+open,dev console,open dev console,Open Salesforce Developer Console in new tab,TRUE,TRUE,,Yes,Fixed sandbox URL handling
 open,developer console,open developer console,Open Salesforce Developer Console (alias),TRUE,TRUE,https://{}.sandbox.my.salesforce.com/_ui/common/apex/debug/ApexCSIPage,Yes,Uses same handler as dev console
-open,debug logs,open debug logs,Navigate to Debug Logs page,TRUE,TRUE
-open,debug log {ID},open debug log 07LXXXXXXXXXXXX,Open specific debug log viewer,TRUE,TRUE
-open,users,open users,Navigate to Users list in Setup,TRUE,TRUE
+open,debug logs,open debug logs,Navigate to Debug Logs page,TRUE,TRUE,,Yes
+open,debug log {ID},open debug log 07LXXXXXXXXXXXX,Open specific debug log viewer,TRUE,TRUE,,Yes
+open,users,open users,Navigate to Users list in Setup,TRUE,TRUE,,Yes,"Open in new tab, not working"
 open,user {Username},open user john@example.com,Navigate to specific user details page,TRUE,TRUE
 open,user {UserID},open user 005XXXXXXXXXXXX,Navigate to specific user details by ID,TRUE,TRUE
-open,active users,open active users,Navigate to active users list,TRUE,TRUE
-open,frozen users,open frozen users,Navigate to frozen users list,TRUE,TRUE
+open,active users,open active users,Navigate to active users list,TRUE,FALSE,,No,Not possible - no URL filter parameter available
+open,frozen users,open frozen users,Navigate to frozen users list,TRUE,FALSE,,No,Not possible - no URL filter parameter available
 open,profiles,open profiles,Navigate to Profiles list in Setup,TRUE,TRUE
 open,profile {Name},open profile System Administrator,Navigate to specific profile details,TRUE,TRUE
 open,permission sets,open permission sets,Navigate to Permission Sets list,TRUE,TRUE
