@@ -734,11 +734,46 @@ class URLBuilder {
     }
 
     // Handlers that should always open in new tab
+    // All commands from rows 20-51
     const newTabHandlers = [
-      'openDevConsole',
+      // Debug & Logging (rows 20-21, 48-51)
       'openDebugLogs',
       'openDebugLog',
-      'openAnonymousApex'
+      'openSystemLog',
+      'openEventLog',
+      'openEmailLogs',
+      'openScheduledJobs',
+      // User Management (rows 22-26)
+      'openUsers',
+      'openUser',
+      'openActiveUsers',
+      'openFrozenUsers',
+      // Security (rows 27-32)
+      'openProfiles',
+      'openProfile',
+      'openPermissionSets',
+      'openPermissionSet',
+      'openPermissionSetGroups',
+      'openPermissionSetGroup',
+      // Apex (rows 33-39)
+      'openApexClasses',
+      'openApexClass',
+      'openApexTriggers',
+      'openApexTrigger',
+      'openApexTestExecution',
+      'openApexJobs',
+      'openAnonymousApex',
+      // Visualforce & Lightning (rows 40-47)
+      'openVisualforcePages',
+      'openVisuaforcePage',
+      'openVisualforceComponents',
+      'openVisualforceComponent',
+      'openLightningComponents',
+      'openLightningComponent',
+      'openAuraBundle',
+      'openLWC',
+      // Developer Tools (row 18-19)
+      'openDevConsole'
     ];
 
     if (newTabHandlers.includes(handlerName)) {
